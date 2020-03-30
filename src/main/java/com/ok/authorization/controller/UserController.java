@@ -1,8 +1,8 @@
-/*
 package com.ok.authorization.controller;
 
+import com.ok.authorization.model.Role;
 import com.ok.authorization.model.User;
-import com.ok.authorization.service.SecurityService;
+import com.ok.authorization.service.RoleService;
 import com.ok.authorization.service.UserService;
 import com.ok.authorization.validation.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private SecurityService securityService;
+    private RoleService roleService;
 
     @Autowired
     private UserValidator userValidator;
@@ -39,33 +39,12 @@ public class UserController {
             return "registration";
         }
 
-        userService.save(userForm);
+        userService.createUser(userForm);
+        Role role = new Role();
+        role.setUser(userForm);
+        role.setRole("ROLE_USER");
+        roleService.addRole(role);
 
-        securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
-
-        return "redirect:/welcome";
+        return "redirect:/login";
     }
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
-        if (error != null) {
-            model.addAttribute("error", "Username or password is incorrect.");
-        }
-
-        if (logout != null) {
-            model.addAttribute("message", "Logged out successfully.");
-        }
-
-        return "login";
-    }
-
-    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "welcome";
-    }
-
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String admin(Model model) {
-        return "admin";
-    }
-}*/
+}

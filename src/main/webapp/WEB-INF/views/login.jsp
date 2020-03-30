@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page session="true"%>
 <html>
 <head>
@@ -49,6 +51,25 @@
 		<c:if test="${not empty msg}">
 			<div class="msg">${msg}</div>
 		</c:if>
+
+<%--		<form:form method="POST" name='loginForm' action="${pageContext.request.contextPath}/login">--%>
+<%--			<h2>Create your account</h2>--%>
+<%--			<spring:bind path="username">--%>
+<%--				<form:input type="text" path="username" placeholder="Username33"--%>
+<%--							autofocus="true"/>--%>
+<%--				<form:errors path="username"/>--%>
+<%--			</spring:bind>--%>
+
+<%--			<spring:bind path="password">--%>
+<%--				<form:input type="password" path="password" placeholder="Password"/>--%>
+<%--				<form:errors path="password"/>--%>
+<%--			</spring:bind>--%>
+
+<%--			<button type="submit">Submit</button>--%>
+
+<%--			<input type="hidden" name="${_csrf.parameterName}"--%>
+<%--				   value="${_csrf.token}" />--%>
+<%--		</form:form>--%>
 
 		<form name='loginForm'
 			action="<c:url value='/login' />" method='POST'>

@@ -4,4 +4,5 @@ import com.ok.authorization.model.User;
 
 public interface UserRepository {
     User findByUserName(String username);
+    void createUser(User user);
 }

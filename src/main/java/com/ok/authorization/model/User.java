@@ -1,11 +1,7 @@
 package com.ok.authorization.model;
 
-import lombok.Data;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
-import java.util.HashSet;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Entity
@@ -15,16 +11,27 @@ public class User {
     @Id
     @Column(name = "username", unique = true,
     nullable = false)
+    @NotEmpty(message = "This field can not be empty")
     private String username;
 
+    @NotEmpty(message = "This field can not be empty")
     @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "enabled", nullable = false)
     private boolean enabled;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Role> roles;
+
+    @Transient
+    private String confirmPassword;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    Set<Article> articles;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    Set<Comment> comments;
 
     public User() {
     }
@@ -59,5 +66,29 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(Set<Article> articles) {
+        this.articles = articles;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

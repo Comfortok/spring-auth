@@ -18,27 +18,24 @@ public class UserRepositoryImpl implements UserRepository {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @SuppressWarnings("unchecked")
     @Override
     public User findByUserName(String username) {
         System.out.println("findBy...");
         return sessionFactory.getCurrentSession().get(User.class, username);
-//        System.out.println("UserRepo.findBy");
-//        List<User> users = new ArrayList<>();
-//        Query query = sessionFactory.getCurrentSession().createQuery("select user from User user where user.username=:username");
-//        System.out.println("Query: " + query.list());
-//        query.setString("username", username);
-//        users = query.list();
-//                users = sessionFactory.getCurrentSession()
-//                .createQuery("select user from User user where user.username=:username")
-//                .setParameter("username", username)
-//                .list();
+    }
 
-//        if (users.size() > 0) {
-//            System.out.println("User found: " + users.get(0));
-//            return (User) users.get(0);
-//        } else {
-//            return null;
-//        }
+    @Override
+    public void createUser(User user) {
+        System.out.println("creating user in dao");
+        entityManager.createNativeQuery("INSERT INTO USERS (USERNAME, PASSWORD) VALUES(?,?)")
+                .setParameter(1, user.getUsername())
+                .setParameter(2, user.getPassword())
+                .executeUpdate();
+//        sessionFactory.getCurrentSession().save(user);
+        System.out.println("User dao. A user was created with email " + user.getUsername());
     }
 }

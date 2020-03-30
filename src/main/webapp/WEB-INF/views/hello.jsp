@@ -7,6 +7,8 @@
 	<h1>Message : ${message}</h1>
 
 	<a href="${pageContext.request.contextPath}/login">Login</a>
+	<a href="<c:url value="/articles"/>">Article list</a>
+	<a href="<c:url value="/registration"/>">Registration</a>
 
 	<sec:authorize access="hasRole('ROLE_USER')">
 		<!-- For login user -->
