@@ -3,19 +3,19 @@ package com.ok.authorization.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "COMMENTS")
+@Table(name = "comments")
 @NamedQuery(name = "getCommentsByArticleId", query = "SELECT e from Comment e where e.article.id = :id")
 public class Comment {
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "TEXT")
+    @Column(name = "text")
     private String text;
 
-    @ManyToOne
-    @JoinColumn(name = "article_id")
+    @ManyToOne(targetEntity = Article.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "article_id", nullable = false)
     private Article article;
 
     @ManyToOne

@@ -24,7 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 @Controller
 public class ArticleController {
@@ -41,11 +40,11 @@ public class ArticleController {
     @Autowired
     private CommentValidator commentValidator;
 
-    @RequestMapping(value = "/articles", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/articles", method = RequestMethod.GET)
     public String listArticles(Model model) {
         model.addAttribute("article", new Article());
         model.addAttribute("listArticles", this.articleService.getAllArticles());
-        return "articles";
+        return "user/articles";
     }
 
     @InitBinder
@@ -55,12 +54,12 @@ public class ArticleController {
         binder.registerCustomEditor(Date.class, "releaseDate", new CustomDateEditor(dateFormat, true));
     }
 
-    @PostMapping(value = "/articles/save")
+    @PostMapping(value = "/admin/articles/save")
     public String addArticle(@Valid @ModelAttribute("article") Article article, BindingResult bindingResult) {
         articleValidator.validate(article, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "addForm";
+            return "admin/addForm";
         }
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -78,38 +77,38 @@ public class ArticleController {
             System.out.println("addArticle.id!=0");
             this.articleService.editArticle(article);
         }
-        return "redirect:/articles";
+        return "redirect:/user/articles";
     }
 
-    @RequestMapping("/add")
+    @RequestMapping("/admin/add")
     public String newArticleForm(@ModelAttribute("article") Article article, Model model) {
         System.out.println(article.getId() + " -- id");
         model.addAttribute(article);
-        return "addForm";
+        return "admin/addForm";
     }
 
-    @RequestMapping(value = "/remove/{id}")
+    @RequestMapping(value = "/admin/remove/{id}", method = RequestMethod.POST)
     public String removeArticle(@PathVariable("id") long id) {
         this.articleService.removeArticle(id);
-        return "redirect:/articles";
+        return "redirect:/user/articles";
     }
 
-    @RequestMapping(value = "/edit/{id}")
+    @RequestMapping(value = "/admin/edit/{id}", method = RequestMethod.GET)
     public String editArticle(@PathVariable("id") long id, Model model) {
         model.addAttribute("article", this.articleService.getArticleById(id));
-        return "addForm";
+        return "admin/addForm";
     }
 
-    @RequestMapping(value = "articleInfo/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "user/articleInfo/{id}", method = RequestMethod.GET)
     public String articleInfo(@PathVariable("id") long id, Model model, @ModelAttribute("comment") Comment comment) {
         Article article = this.articleService.getArticleById(id);
         model.addAttribute("article", article);
         model.addAttribute("listComments", this.commentService.getAllComments(article));
         model.addAttribute("comment", comment);
-        return "articleInfo";
+        return "user/articleInfo";
     }
 
-    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/remove", method = RequestMethod.POST)
     public String remove(HttpServletRequest request, ModelMap modelMap) {
         String[] articleId = request.getParameterValues("articleId");
         if (articleId != null) {
@@ -119,10 +118,10 @@ public class ArticleController {
         } else {
             modelMap.put("error", "error in remove method");
         }
-        return "redirect:/articles";
+        return "redirect:/user/articles";
     }
 
-    @PostMapping(value = "/articleInfo/{id}")
+    @PostMapping(value = "user/articleInfo/{id}")
     public String addComment(@ModelAttribute("comment") Comment comment, BindingResult bindingResult,
                              @PathVariable("id") long id, Model model) {
         commentValidator.validate(comment, bindingResult);

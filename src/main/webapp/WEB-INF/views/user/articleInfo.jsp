@@ -2,11 +2,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <head>
-    <c:import url="header.jsp" charEncoding="UTF-8"/>
+    <c:import url="../header.jsp" charEncoding="UTF-8"/>
 </head>
 <body>
 
@@ -14,10 +15,10 @@
     <div class="grid-item item1">
         <div class="nav">
             <ul>
-                <li><a href="<c:url value="/articles"/>">
+                <li><a href="<c:url value="/user/articles"/>">
                     <spring:message code="nav.list"/>
                 </a></li>
-                <li><a href="<c:url value="/add"/>">
+                <li><a href="<c:url value="/admin/add"/>">
                     <spring:message code="nav.add"/>
                 </a></li>
             </ul>
@@ -25,7 +26,7 @@
     </div>
 
     <div class="grid-item item2">
-        <form method="post" action="${pageContext.request.contextPath}/edit/${article.id}">
+        <form:form action="${pageContext.request.contextPath}/admin/edit/${article.id}">
             <div class="grid-table table2">
                 <div class="grid-item item3">
                     <spring:message code="article.title"/>
@@ -47,18 +48,22 @@
                 </div>
                 <br/>
             </div>
-            <input type="submit" value="<spring:message code="article.edit"/>"/>
-        </form>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <input type="submit" value="<spring:message code="article.edit"/>"/>
+            </sec:authorize>
+        </form:form>
 
-        <form method="post" action="${pageContext.request.contextPath}/remove/${article.id}">
-            <input type="submit" value="<spring:message code="article.delete"/>"
-                   onclick="return confirm('<spring:message code="onclick.delete"/>')"/>
-        </form>
+        <form:form method="post" action="${pageContext.request.contextPath}/admin/remove/${article.id}">
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <input type="submit" value="<spring:message code="article.delete"/>"
+                       onclick="return confirm('<spring:message code="onclick.delete"/>')"/>
+            </sec:authorize>
+        </form:form>
         <br/>
         <br/>
         <br/>
         Add comment:
-        <form:form action="${pageContext.request.contextPath}/articleInfo/${article.id}" modelAttribute="comment"
+        <form:form action="${pageContext.request.contextPath}/user/articleInfo/${article.id}" modelAttribute="comment"
         method="post">
             <div class="grid-table table2">
                 <div class="grid-item">
@@ -90,6 +95,6 @@
     </div>
 </div>
 
-<c:import url="footer.jsp" charEncoding="UTF-8"/>
+<c:import url="../footer.jsp" charEncoding="UTF-8"/>
 </body>
 </html>

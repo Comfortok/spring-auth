@@ -8,29 +8,29 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "ARTICLE")
+@Table(name = "article")
 @NamedQuery(name = "getAnArticleById", query = "SELECT e from Article e where e.id = :id")
 public class Article {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "HEADER")
+    @Column(name = "header")
     private String header;
 
-    @Column(name = "TEXT")
+    @Column(name = "text")
     private String text;
 
-    @Column(name = "RELEASE_DATE")
+    @Column(name = "release_date")
     private Date releaseDate;
 
     @ManyToOne//FIX IT
-    @JoinColumn(name = "USERNAME")
+    @JoinColumn(name = "username")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy = "article")
     private Set<Comment> comments;
 
     public long getId() {

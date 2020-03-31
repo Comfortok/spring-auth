@@ -7,7 +7,7 @@
 <html>
 <head>
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
-    <c:import url="header.jsp" charEncoding="UTF-8"/>
+    <c:import url="../header.jsp" charEncoding="UTF-8"/>
 </head>
 <body>
 
@@ -15,10 +15,10 @@
     <div class="grid-item item1">
         <div class="nav">
             <ul>
-                <li><a href="<c:url value="/articles"/>">
+                <li><a href="<c:url value="/user/articles"/>">
                     <spring:message code="nav.list"/>
                 </a></li>
-                <li><a href="<c:url value="/add"/>">
+                <li><a href="<c:url value="/admin/add"/>">
                     <spring:message code="nav.add"/>
                 </a></li>
             </ul>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="grid-item item2">
-        <c:url value="/articles/save" var="saveAction"/>
+        <c:url value="/admin/articles/save" var="saveAction"/>
         <form:form action="${saveAction}" modelAttribute="article">
             <c:if test="${!empty article.header}">
                 <form:hidden path="id"/>

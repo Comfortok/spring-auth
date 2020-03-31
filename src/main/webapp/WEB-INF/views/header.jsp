@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="header">
-    <a href="${pageContext.request.contextPath}/articles">
+    <a href="${pageContext.request.contextPath}/user/articles">
         <spring:message code="header.logo"/>
     </a>
     <div class="header-right">
