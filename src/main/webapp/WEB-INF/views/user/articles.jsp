@@ -1,14 +1,13 @@
-<!DOCTYPE html>
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page session="false" %>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <head>
     <c:import url="../header.jsp" charEncoding="UTF-8"/>

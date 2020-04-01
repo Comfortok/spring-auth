@@ -1,5 +1,7 @@
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <body>
 	<h1>HTTP Status 403 - Access is denied</h1>
 

@@ -1,10 +1,11 @@
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <head>
     <c:import url="../header.jsp" charEncoding="UTF-8"/>
@@ -84,7 +85,7 @@
         <c:forEach items="${listComments}" var="comment">
             <div class="grid-table table2">
                 <div class="grid-item">
-                    <spring:message code="comment.text"/>
+                    ${comment.user.username}
                 </div>
                 <div class="grid-item">
                         ${comment.text}

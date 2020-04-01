@@ -7,9 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.LocaleResolver;
@@ -44,7 +42,7 @@ public class AppConfig implements WebMvcConfigurer {
     public BasicDataSource dataSource() {
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        basicDataSource.setUrl("jdbc:mysql://localhost:3306/news?serverTimezone=UTC&useSSL=false");
+        basicDataSource.setUrl("jdbc:mysql://localhost:3306/news?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf8");
         basicDataSource.setUsername("root");
         basicDataSource.setPassword("admin");
         return basicDataSource;
@@ -64,17 +62,6 @@ public class AppConfig implements WebMvcConfigurer {
         return new HibernateTransactionManager(sessionFactory());
     }
 
-//    @Bean(name = "dataSource")
-//    public DriverManagerDataSource dataSource() {
-//        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-//        driverManagerDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//        driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/news?serverTimezone=UTC&useSSL=false");
-//        driverManagerDataSource.setUsername("root");
-//        driverManagerDataSource.setPassword("admin");
-//        return driverManagerDataSource;
-//    }
-
-
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
@@ -91,6 +78,7 @@ public class AppConfig implements WebMvcConfigurer {
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
+        viewResolver.setContentType("text/html; charset=UTF-8");
         return viewResolver;
     }
 

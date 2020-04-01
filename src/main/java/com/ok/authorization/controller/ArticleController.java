@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -123,7 +124,7 @@ public class ArticleController {
 
     @PostMapping(value = "user/articleInfo/{id}")
     public String addComment(@ModelAttribute("comment") Comment comment, BindingResult bindingResult,
-                             @PathVariable("id") long id, Model model) {
+                             @PathVariable("id") long id, Model model, HttpServletRequest request) throws UnsupportedEncodingException {
         commentValidator.validate(comment, bindingResult);
 
         if (bindingResult.hasErrors()) {
