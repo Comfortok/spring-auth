@@ -8,8 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a42aea81-6ef7-4149-bc2e-7c059e78a6b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -271,7 +272,8 @@
       <workItem from="1585547805039" duration="15322000" />
       <workItem from="1585630914824" duration="9347000" />
       <workItem from="1585720855271" duration="16826000" />
-      <workItem from="1585824585650" duration="3241000" />
+      <workItem from="1585824585650" duration="3386000" />
+      <workItem from="1585896153584" duration="9915000" />
     </task>
     <servers />
   </component>
