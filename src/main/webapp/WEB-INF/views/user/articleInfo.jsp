@@ -12,90 +12,64 @@
 </head>
 <body>
 
-<div class="grid-container">
-    <div class="grid-item item1">
-        <div class="nav">
-            <ul>
-                <li><a href="<c:url value="/user/articles"/>">
-                    <spring:message code="nav.list"/>
-                </a></li>
-                <li><a href="<c:url value="/admin/add"/>">
-                    <spring:message code="nav.add"/>
-                </a></li>
-            </ul>
+<div class="card text-center">
+    <form:form action="${pageContext.request.contextPath}/admin/edit/${article.id}" method="post">
+        <div class="card-header">
+                ${article.header}
         </div>
-    </div>
-
-    <div class="grid-item item2">
-        <form:form action="${pageContext.request.contextPath}/admin/edit/${article.id}">
-            <div class="grid-table table2">
-                <div class="grid-item item3">
-                    <spring:message code="article.title"/>
-                </div>
-                <div class="grid-item item3">
-                    ${article.header}
-                </div>
-                <div class="grid-item item3">
-                    <spring:message code="article.date"/>
-                </div>
-                <div class="grid-item item3">
-                    <fmt:formatDate type="date" value="${article.releaseDate}" pattern="yyyy-MM-dd"/>
-                </div>
-                <div class="grid-item item3">
-                    <spring:message code="article.text"/>
-                </div>
-                <div class="grid-item item3">
+        <div class="card-body">
+            <p class="card-text">
                     ${article.text}
-                </div>
-                <br/>
-            </div>
+            </p>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <input type="submit" value="<spring:message code="article.edit"/>"/>
+                <input type="submit" class="btn btn-warning" value="<spring:message code="article.edit"/>"/>
             </sec:authorize>
-        </form:form>
+        </div>
+        <div class="card-footer text-muted">
+            <fmt:formatDate type="date" value="${article.releaseDate}" pattern="yyyy-MM-dd"/>
+        </div>
+    </form:form>
 
-        <form:form method="post" action="${pageContext.request.contextPath}/admin/remove/${article.id}">
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <input type="submit" value="<spring:message code="article.delete"/>"
-                       onclick="return confirm('<spring:message code="onclick.delete"/>')"/>
-            </sec:authorize>
-        </form:form>
-        <br/>
-        <br/>
-        <br/>
-        Add comment:
-        <form:form action="${pageContext.request.contextPath}/user/articleInfo/${article.id}" modelAttribute="comment"
-        method="post">
-            <div class="grid-table table2">
-                <div class="grid-item">
-                    <form:label path="text" cssStyle="font-size: 14px">
-                        <spring:message code="article.text"/>
-                    </form:label>
-                </div>
-                <div class="grid-item">
-                    <form:textarea path="text" rows="5" cols="40"/>
-                    <form:errors path="text"/>
-                </div>
-                <br/>
-            </div>
-            <input type="submit" value="<spring:message code="button.save"/>"/>
-        </form:form>
-        Comments:
-        <br/>
-        <c:forEach items="${listComments}" var="comment">
-            <div class="grid-table table2">
-                <div class="grid-item">
-                    ${comment.user.username}
-                </div>
-                <div class="grid-item">
-                        ${comment.text}
-                </div>
-                <br/>
-            </div>
-        </c:forEach>
-    </div>
+    <form:form method="post" action="${pageContext.request.contextPath}/admin/remove/${article.id}">
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <input type="submit" class="btn btn-danger" value="<spring:message code="article.delete"/>"
+                   onclick="return confirm('<spring:message code="onclick.delete"/>')"/>
+        </sec:authorize>
+    </form:form>
 </div>
 
-<c:import url="../footer.jsp" charEncoding="UTF-8"/>
+<center>
+    <div class="card-text-center">
+        <br/>
+        <form:form action="${pageContext.request.contextPath}/user/articleInfo/${article.id}" modelAttribute="comment"
+                   method="post">
+            <div class="form-group">
+                <label for="userInfo">${pageContext.request.userPrincipal.name}</label>
+                <form:textarea path="text" class="form-control" id="userInfo" rows="3"
+                               placeholder="Enter your text"/>
+                <form:errors path="text"/>
+            </div>
+            <input type="submit" class="btn btn-primary" value="<spring:message code="button.save"/>"/>
+        </form:form>
+
+        <br/>
+        <c:forEach items="${listComments}" var="comment">
+            <div class="card">
+                <div class="card-header">
+                        ${comment.user.username}
+                </div>
+                <div class="card-body">
+                    <p class="card-text">${comment.text}</p>
+                        <%--        <a href="#" class="btn btn-primary">Reply</a>--%>
+                </div>
+            </div>
+            <br/>
+        </c:forEach>
+    </div>
+</center>
 </body>
+
+<footer id="footer">
+    <c:import url="../footer.jsp" charEncoding="UTF-8"/>
+</footer>
 </html>

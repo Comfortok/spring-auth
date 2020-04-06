@@ -9,8 +9,8 @@
     <title>Registration</title>
     <c:import url="header.jsp" charEncoding="UTF-8"/>
 </head>
-<body>
 
+<body>
 <center>
     <div class="card-text-center">
         <form:form method="POST" modelAttribute="userForm" action="${pageContext.request.contextPath}/registration">
@@ -44,9 +44,9 @@
         </form:form>
     </div>
 </center>
+</body>
 
 <footer id="footer">
     <c:import url="footer.jsp" charEncoding="UTF-8"/>
 </footer>
-</body>
 </html>

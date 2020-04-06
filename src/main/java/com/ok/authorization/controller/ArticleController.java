@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -101,11 +101,19 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "user/articleInfo/{id}", method = RequestMethod.GET)
-    public String articleInfo(@PathVariable("id") long id, Model model, @ModelAttribute("comment") Comment comment) {
+    public String articleInfo(@PathVariable("id") long id, Model model,
+                              @ModelAttribute("comment") Comment comment) {
         Article article = this.articleService.getArticleById(id);
         model.addAttribute("article", article);
         model.addAttribute("listComments", this.commentService.getAllComments(article));
         model.addAttribute("comment", comment);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+            System.out.println("Username on comment: " + userDetail);
+            model.addAttribute("username", userDetail.getUsername());
+        }
         return "user/articleInfo";
     }
 
@@ -124,7 +132,7 @@ public class ArticleController {
 
     @PostMapping(value = "user/articleInfo/{id}")
     public String addComment(@ModelAttribute("comment") Comment comment, BindingResult bindingResult,
-                             @PathVariable("id") long id, Model model, HttpServletRequest request) throws UnsupportedEncodingException {
+                             @PathVariable("id") long id, Model model) {
         commentValidator.validate(comment, bindingResult);
 
         if (bindingResult.hasErrors()) {

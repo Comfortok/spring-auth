@@ -10,10 +10,9 @@
     <title>Login Page</title>
     <c:import url="header.jsp" charEncoding="UTF-8"/>
 </head>
+
 <body onload='document.loginForm.username.focus();'>
-
-<h1>Spring Security Login Form</h1>
-
+<h1>Login Form</h1>
 <center>
     <div class="card-text-center">
         <form action="${pageContext.request.contextPath}/login" method="post">
@@ -48,8 +47,8 @@
         </form>
     </div>
 </center>
+</body>
 <footer id="footer">
     <c:import url="footer.jsp" charEncoding="UTF-8"/>
 </footer>
-</body>
 </html>
