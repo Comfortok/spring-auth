@@ -1135,12 +1135,14 @@
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
+      <Collation>utf8mb4_unicode_ci</Collation>
     </column>
     <column id="287" parent="281" name="text">
       <Position>3</Position>
       <DataType>varchar(2050)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
+      <Collation>utf8mb4_unicode_ci</Collation>
     </column>
     <column id="288" parent="281" name="release_date">
       <Position>4</Position>
@@ -1167,6 +1169,8 @@
       <ColNames>username</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>username</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="293" parent="282" name="id">
       <Position>1</Position>
@@ -1180,6 +1184,7 @@
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
+      <Collation>utf8mb4_unicode_ci</Collation>
     </column>
     <column id="295" parent="282" name="article_id">
       <Position>3</Position>
@@ -1252,6 +1257,8 @@
       <ColNames>username</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>username</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="308" parent="284" name="username">
       <Position>1</Position>

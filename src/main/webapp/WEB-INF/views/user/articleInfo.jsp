@@ -13,7 +13,7 @@
 <body>
 
 <div class="card text-center">
-    <form:form action="${pageContext.request.contextPath}/admin/edit/${article.id}" method="post">
+    <form:form action="${pageContext.request.contextPath}/admin/edit/${article.id}">
         <div class="card-header">
                 ${article.header}
         </div>

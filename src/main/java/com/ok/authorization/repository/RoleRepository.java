@@ -5,5 +5,5 @@ import com.ok.authorization.model.User;
 
 public interface RoleRepository {
     void addRole(Role role);
-    void updateRole(String username);
+    void removeRole(Role role);
 }

@@ -42,7 +42,7 @@ public class AppConfig implements WebMvcConfigurer {
     public BasicDataSource dataSource() {
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        basicDataSource.setUrl("jdbc:mysql://localhost:3306/news?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf8");
+        basicDataSource.setUrl("jdbc:mysql://localhost:3306/news?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC");//&useUnicode=true&characterEncoding=utf8
         basicDataSource.setUsername("root");
         basicDataSource.setPassword("admin");
         return basicDataSource;

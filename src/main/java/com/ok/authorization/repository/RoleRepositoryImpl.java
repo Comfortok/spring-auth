@@ -5,11 +5,13 @@ import com.ok.authorization.model.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Repository
+@Transactional
 public class RoleRepositoryImpl implements RoleRepository {
 
     @Autowired
@@ -27,10 +29,7 @@ public class RoleRepositoryImpl implements RoleRepository {
     }
 
     @Override
-    public void updateRole(String username) {
-        Role role = sessionFactory.getCurrentSession().load(Role.class, username);
-        if (role != null) {
-            sessionFactory.getCurrentSession().saveOrUpdate(role);
-        }
+    public void removeRole(Role role) {
+        sessionFactory.getCurrentSession().delete(role);
     }
 }

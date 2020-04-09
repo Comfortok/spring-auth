@@ -28,6 +28,11 @@
                                 Add News
                             </a>
                         </li>
+                        <li class="nav-item active">
+                            <a class="btn btn-link" href="${pageContext.request.contextPath}/admin/showUsers">
+                                Show users
+                            </a>
+                        </li>
                     </sec:authorize>
                     <li class="nav-item active">
                         <form action="${pageContext.request.contextPath}/logout" method="post">

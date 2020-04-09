@@ -2,17 +2,16 @@ package com.ok.authorization.repository;
 
 import com.ok.authorization.model.User;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@Transactional
 public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
@@ -37,5 +36,25 @@ public class UserRepositoryImpl implements UserRepository {
                 .executeUpdate();
 //        sessionFactory.getCurrentSession().save(user);
         System.out.println("User dao. A user was created with email " + user.getUsername());
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<User> getAllUsers() {
+        return sessionFactory.getCurrentSession().createQuery("from User").list();
+    }
+
+    @Override
+    public void enableUser(String username) {
+        entityManager.createNativeQuery("UPDATE users SET enabled = 1 WHERE username = ?")
+                .setParameter(1, username)
+                .executeUpdate();
+    }
+
+    @Override
+    public void disableUser(String username) {
+        entityManager.createNativeQuery("UPDATE users SET enabled = 0 WHERE username = ?")
+                .setParameter(1, username)
+                .executeUpdate();
     }
 }

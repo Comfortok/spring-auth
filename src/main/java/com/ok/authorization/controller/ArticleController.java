@@ -2,6 +2,7 @@ package com.ok.authorization.controller;
 
 import com.ok.authorization.model.Article;
 import com.ok.authorization.model.Comment;
+import com.ok.authorization.model.Role;
 import com.ok.authorization.model.User;
 import com.ok.authorization.service.ArticleService;
 import com.ok.authorization.service.CommentService;
@@ -25,6 +26,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
 @Controller
 public class ArticleController {
@@ -72,10 +74,8 @@ public class ArticleController {
             System.out.println("Logged: " + userDetail);
         }
         if (article.getId() == 0) {
-            System.out.println("addArticle.id=0");
             this.articleService.createArticle(article);
         } else {
-            System.out.println("addArticle.id!=0");
             this.articleService.editArticle(article);
         }
         return "redirect:/user/articles";
@@ -94,7 +94,7 @@ public class ArticleController {
         return "redirect:/user/articles";
     }
 
-    @RequestMapping(value = "/admin/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/edit/{id}", method = {RequestMethod.POST, RequestMethod.GET})
     public String editArticle(@PathVariable("id") long id, Model model) {
         model.addAttribute("article", this.articleService.getArticleById(id));
         return "admin/addForm";
