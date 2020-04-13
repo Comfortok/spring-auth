@@ -70,6 +70,7 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 
     @Override
     public Article getArticleById(long id) {
+        System.out.println("Getting an article in repository");
         Query query = sessionFactory.getCurrentSession().getNamedQuery("getAnArticleById");
         query.setParameter("id", id);
         Object result = query.getSingleResult();
@@ -80,11 +81,9 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     @Override
     @SuppressWarnings("unchecked")
     public List<Article> getAllArticles() {
-        System.out.println("AREPO.getAll");
+        System.out.println("Getting all articles in repository.");
         Query query = entityManager.createQuery("select e from Article e order by e.releaseDate desc");
-        System.out.println("Query done");
         logger.info("All articles were selected.");
-        System.out.println("Logged... and returned");
         return (List<Article>) query.getResultList();
     }
 }

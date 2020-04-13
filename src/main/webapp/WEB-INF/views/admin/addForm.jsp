@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="currentDate" class="java.util.Date"/>
 
 <html>
 <head>
@@ -28,11 +29,18 @@
             </spring:bind>
 
             <spring:bind path="releaseDate">
-                <label for="releaseDate">Date</label>
-                <form:input type="text" path="releaseDate" cssClass="form-control" id="releaseDate" name="releaseDate"
-                            required="required" pattern="^\d{4}-\d{2}-\d{2}$" title="yyyy-MM-dd"/>
-                <form:errors path="releaseDate" cssClass="error"/>
-                <br>
+                <form:hidden path="releaseDate"/>
+<%--                <input id="releaseDate" name="releaseDate" type="hidden"--%>
+<%--                       value="<fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm"--%>
+<%--                                value="${currentDate}"/>"/>--%>
+<%--                <fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm"--%>
+<%--                                value="${currentDate}"/>--%>
+
+<%--                <label for="releaseDate">Date</label>--%>
+<%--                <form:input type="text" path="releaseDate" cssClass="form-control" id="releaseDate" name="releaseDate"--%>
+<%--                            required="required" pattern="^\d{4}-\d{2}-\d{2}$" title="yyyy-MM-dd"/>--%>
+<%--                <form:errors path="releaseDate" cssClass="error"/>--%>
+<%--                <br>--%>
             </spring:bind>
 
             <spring:bind path="text">

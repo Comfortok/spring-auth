@@ -1,7 +1,5 @@
 package com.ok.authorization.controller;
 
-import com.sun.deploy.net.HttpResponse;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

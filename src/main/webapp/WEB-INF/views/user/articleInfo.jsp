@@ -26,7 +26,8 @@
             </sec:authorize>
         </div>
         <div class="card-footer text-muted">
-            <fmt:formatDate type="date" value="${article.releaseDate}" pattern="yyyy-MM-dd"/>
+            <fmt:formatDate type="both" dateStyle="short" timeStyle="short"
+                            value="${article.releaseDate}"/>
         </div>
     </form:form>
 

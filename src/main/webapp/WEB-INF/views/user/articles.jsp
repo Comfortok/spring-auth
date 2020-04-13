@@ -47,11 +47,13 @@
                              data-parent="#accordion">
                             <div class="card-body">
                                 <h6 class="card-subtitle mb-2 text-muted">
-                                    <fmt:formatDate pattern="yyyy-MM-dd" value="${article.releaseDate}"/>
+                                    <fmt:formatDate type="both" dateStyle="short" timeStyle="short"
+                                                    value="${article.releaseDate}"/>
                                 </h6>
-                                <p class="card-text">
+                                <p class="card-text block">
                                         ${article.text}
                                 </p>
+                                <a href="#" class="button">More</a><br/>
                                 <a href="/user/articleInfo/${article.id}" class="card-link">
                                     <spring:message code="article.view"/></a>
                                 <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -77,4 +79,19 @@
 <footer id="footer">
     <c:import url="../footer.jsp" charEncoding="UTF-8"/>
 </footer>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('.button').click(function(){
+            $('.block').toggleClass('opener');
+            if (!$(this).data('status')) {
+                $(this).data('status', true).html('Hide');
+            } else {
+                $(this).data('status', false).html('More');
+            }
+        });
+
+    });
+</script>
 </html>

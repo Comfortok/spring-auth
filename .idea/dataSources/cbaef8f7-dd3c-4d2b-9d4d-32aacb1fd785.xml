@@ -1146,7 +1146,7 @@
     </column>
     <column id="288" parent="281" name="release_date">
       <Position>4</Position>
-      <DataType>date|0s</DataType>
+      <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>

@@ -2,6 +2,7 @@ package com.ok.authorization.config;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +28,7 @@ import java.util.Properties;
 @Configuration
 @ComponentScan( {"com.ok.authorization.*"} )
 @EnableTransactionManagement
-@Import( { SecurityConfig.class } )
+@Import( { SecurityConfig.class, CacheConfig.class } )
 public class AppConfig implements WebMvcConfigurer {
 
     @Bean

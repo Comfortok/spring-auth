@@ -36,7 +36,7 @@ public class ArticleValidator implements Validator {
             }
         });
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "releaseDate", "validation.field.required");
+//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "releaseDate", "validation.field.required");
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "text", "validation.field.required");
         if (article.getText().length() < 2 || article.getText().length() > 2548) {

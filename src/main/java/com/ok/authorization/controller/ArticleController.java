@@ -52,7 +52,7 @@ public class ArticleController {
 
     @InitBinder
     public void dataBinding(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, "releaseDate", new CustomDateEditor(dateFormat, true));
     }
