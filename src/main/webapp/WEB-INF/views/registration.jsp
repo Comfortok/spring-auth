@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<h3>Reg Form. Checking body tag</h3>
 <center>
     <div class="card-text-center">
         <form:form method="POST" modelAttribute="userForm" action="${pageContext.request.contextPath}/registration">

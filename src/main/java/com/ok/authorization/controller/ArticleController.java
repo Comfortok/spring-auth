@@ -1,5 +1,6 @@
 package com.ok.authorization.controller;
 
+import com.ok.authorization.exception.ArticleNotFoundException;
 import com.ok.authorization.model.Article;
 import com.ok.authorization.model.Comment;
 import com.ok.authorization.model.Role;
@@ -103,7 +104,12 @@ public class ArticleController {
     @RequestMapping(value = "user/articleInfo/{id}", method = RequestMethod.GET)
     public String articleInfo(@PathVariable("id") long id, Model model,
                               @ModelAttribute("comment") Comment comment) {
-        Article article = this.articleService.getArticleById(id);
+        Article article;
+        try {
+            article = this.articleService.getArticleById(id);
+        } catch (RuntimeException e) {
+            throw new ArticleNotFoundException(id);
+        }
         model.addAttribute("article", article);
         model.addAttribute("listComments", this.commentService.getAllComments(article));
         model.addAttribute("comment", comment);

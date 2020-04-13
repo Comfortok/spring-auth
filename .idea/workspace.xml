@@ -7,21 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a42aea81-6ef7-4149-bc2e-7c059e78a6b7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cbaef8f7-dd3c-4d2b-9d4d-32aacb1fd785.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cbaef8f7-dd3c-4d2b-9d4d-32aacb1fd785.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/Run.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/config/core/SpringMvcInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/config/core/SpringMvcInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/ArticleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/validation/ArticleValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/validation/ArticleValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/addForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/addForm.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/articleInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/articleInfo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/articles.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/articles.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/403.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error/403.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -104,12 +96,8 @@
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\user" />
-      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\admin" />
-      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp" />
-      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF" />
-      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ok.authorization.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\admin" />
@@ -118,8 +106,12 @@
       <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\java\com\ok\authorization\controller" />
       <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\java\com\ok\authorization\service" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.ok.authorization.model" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\error" />
+      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\user" />
+      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\admin" />
+      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp" />
+      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -280,7 +272,7 @@
       <workItem from="1586326464542" duration="15712000" />
       <workItem from="1586413492033" duration="13230000" />
       <workItem from="1586498361828" duration="10961000" />
-      <workItem from="1586762416113" duration="3842000" />
+      <workItem from="1586762416113" duration="18301000" />
     </task>
     <servers />
   </component>
