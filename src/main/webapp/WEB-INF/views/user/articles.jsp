@@ -55,20 +55,21 @@
                                 </p>
                                 <a href="#" class="button">More</a><br/>
                                 <a href="/user/articleInfo/${article.id}" class="card-link">
-                                    <spring:message code="article.view"/></a>
+                                    <spring:message code="articles.view"/></a>
                                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                                     <a href="<c:url value="/admin/edit/${article.id}"/>" class="card-link">
-                                        <spring:message code="article.edit"/></a>
+                                        <spring:message code="articles.edit"/></a>
                                 </sec:authorize>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
-                <br>
+                <br/>
 
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <input type="submit" class="btn btn-primary" value="<spring:message code="article.delete"/>"
-                           onclick="return confirm('<spring:message code="onclick.delete"/>')"/>
+                    <input type="submit" class="btn btn-primary" value="<spring:message code="articles.delete"/>"
+                           onclick="return confirm('<spring:message code="articles.onclick.delete"/>')"/>
+                    <br/>
                 </sec:authorize>
             </div>
         </form:form>

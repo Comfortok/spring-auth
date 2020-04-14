@@ -30,7 +30,7 @@ public class CommentRepositoryImpl implements CommentRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Override//TODO user_id --> change
+    @Override
     public void createComment(Comment comment, long id) {
         entityManager.createNativeQuery("INSERT INTO COMMENTS(TEXT, ARTICLE_ID, USERNAME) VALUES(?, ?, ?)")
                 .setParameter(1, comment.getText())

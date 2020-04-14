@@ -1,4 +1,4 @@
-package com.ok.authorization.controller;
+package com.ok.authorization.exception;
 
 import com.ok.authorization.exception.ArticleNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

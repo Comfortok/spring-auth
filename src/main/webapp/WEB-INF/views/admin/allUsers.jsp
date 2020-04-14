@@ -6,41 +6,56 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <head>
-    <title>Role Adding</title>
+    <title><spring:message code="allUsers.title"/></title>
     <c:import url="../header.jsp" charEncoding="UTF-8"/>
 </head>
 
 <body>
 <center>
     <div class="card-text-center">
-            <h2>User settings</h2>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Username</th>
-                    <th scope="col">Enabled</th>
-                    <th scope="col">Admin</th>
-                    <th scope="col">Modify</th>
-                </tr>
-                </thead>
-                <tbody>
+        <h2><spring:message code="allUsers.header"/></h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"><spring:message code="allUsers.username"/></th>
+                <th scope="col"><spring:message code="allUsers.enabled"/></th>
+                <th scope="col"><spring:message code="allUsers.admin"/></th>
+                <th scope="col"><spring:message code="allUsers.modify"/></th>
+            </tr>
+            </thead>
+            <tbody>
 
-                <c:forEach items="${userList}" var="user">
+            <c:forEach items="${userList}" var="user">
                 <tr>
                     <td>${user.username}</td>
-                    <td>${user.enabled}</td>
-                    <td>${user.roles}</td>
                     <td>
-                        <a href="/admin/disable/${user.username}">Disable</a>
-                        <a href="/admin/enable/${user.username}">Enable</a>
-                        <a href="${pageContext.request.contextPath}/admin/roleModifier/${user.username}">Add Role</a>
+                        <c:choose>
+                            <c:when test="${user.enabled}">
+                                <spring:message code="allUsers.enable.true"/>
+                            </c:when>
+                            <c:otherwise>
+                                <spring:message code="allUsers.enable.false"/>
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>
+                        <c:if test="${not empty adminRights}">
+                            <spring:message code="allUsers.adminRights.true"/>
+                        </c:if>
+                    </td>
+                    <td>
+                        <a href="/admin/disable/${user.username}"><spring:message code="allUsers.disable"/></a><br/>
+                        <a href="/admin/enable/${user.username}"><spring:message code="allUsers.enable"/></a><br/>
+                        <a href="${pageContext.request.contextPath}/admin/roleModifier/${user.username}">
+                            <spring:message code="allUsers.addRole"/>
+                        </a>
                     </td>
                 </tr>
-                </c:forEach>
+            </c:forEach>
 
-                </tbody>
-            </table>
-            <br/>
+            </tbody>
+        </table>
+        <br/>
     </div>
 </center>
 </body>

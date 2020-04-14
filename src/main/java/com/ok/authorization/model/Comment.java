@@ -1,6 +1,8 @@
 package com.ok.authorization.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "comments")
@@ -12,6 +14,8 @@ public class Comment {
     private long id;
 
     @Column(name = "text")
+    @NotEmpty
+    @Size(min = 2, max = 500, message = "{validation.comment.length}")
     private String text;
 
     @ManyToOne(targetEntity = Article.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)

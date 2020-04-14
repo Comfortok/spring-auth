@@ -33,7 +33,7 @@ public class ArticleRepositoryImpl implements ArticleRepository {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override//TODO user_id --> change
+    @Override
     public void createArticle(Article article) {
         System.out.println("createArticle(). User: " + article.getUser());
         entityManager.createNativeQuery("INSERT INTO ARTICLE(HEADER, TEXT, RELEASE_DATE, USERNAME) VALUES(?,?,?,?)")

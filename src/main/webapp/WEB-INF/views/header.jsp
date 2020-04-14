@@ -20,17 +20,17 @@
                 <c:when test="${pageContext.request.userPrincipal.name != null}">
                     <li class="nav-item active">
                         <a class="nav-link" href="${pageContext.request.contextPath}/user/articles">
-                            <spring:message code="header.logo"/><span class="sr-only">(current)</span></a>
+                            <spring:message code="header.logo"/></a>
                     </li>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <li class="nav-item active">
                             <a class="btn btn-link" href="${pageContext.request.contextPath}/admin/add">
-                                Add News
+                                <spring:message code="header.news.add"/>
                             </a>
                         </li>
                         <li class="nav-item active">
                             <a class="btn btn-link" href="${pageContext.request.contextPath}/admin/showUsers">
-                                Show users
+                                <spring:message code="header.users.show"/>
                             </a>
                         </li>
                     </sec:authorize>
@@ -39,7 +39,7 @@
                             <input type="hidden" name="${_csrf.parameterName}"
                                    value="${_csrf.token}"/>
                             <button type="submit" class="btn btn-link">
-                                Logout
+                                <spring:message code="header.logout"/>
                             </button>
                         </form>
                     </li>
@@ -47,11 +47,11 @@
                 <c:otherwise>
                     <li class="nav-item active">
                         <a class="nav-link" href="${pageContext.request.contextPath}/login">
-                            Login</a>
+                            <spring:message code="header.login"/></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="${pageContext.request.contextPath}/registration">
-                            Registration</a>
+                            <spring:message code="header.registration"/></a>
                     </li>
                 </c:otherwise>
             </c:choose>

@@ -3,6 +3,7 @@
           uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
@@ -11,27 +12,19 @@
 </head>
 <body>
 
-<%--<security:authorize access="isAuthenticated()">--%>
-<%--    <security:authentication property="principal.enabled" var="status"/>--%>
-<%--    <c:if test="${status == false}">--%>
-<%--        <c:redirect url="/403"/>--%>
-<%--        <c:out value="False"/>--%>
-<%--    </c:if>--%>
-<%--</security:authorize>--%>
-
 <div class="jumbotron">
-    <h1 class="display-4">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <h1 class="display-4"><spring:message code="hello.header"/></h1>
+    <p class="lead"><spring:message code="hello.lead"/></p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p><spring:message code="hello.text"/></p>
     <p class="lead">
         <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/user/articles"
-           role="button">Articles</a>
+           role="button"><spring:message code="hello.button.articles"/></a>
     </p>
 </div>
 </body>
 
 <footer id="footer">
-	<c:import url="footer.jsp" charEncoding="UTF-8"/>
+    <c:import url="footer.jsp" charEncoding="UTF-8"/>
 </footer>
 </html>

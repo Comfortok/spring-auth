@@ -22,7 +22,7 @@
                     ${article.text}
             </p>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <input type="submit" class="btn btn-warning" value="<spring:message code="article.edit"/>"/>
+                <input type="submit" class="btn btn-warning" value="<spring:message code="articleInfo.edit"/>"/>
             </sec:authorize>
         </div>
         <div class="card-footer text-muted">
@@ -33,8 +33,8 @@
 
     <form:form method="post" action="${pageContext.request.contextPath}/admin/remove/${article.id}">
         <sec:authorize access="hasRole('ROLE_ADMIN')">
-            <input type="submit" class="btn btn-danger" value="<spring:message code="article.delete"/>"
-                   onclick="return confirm('<spring:message code="onclick.delete"/>')"/>
+            <input type="submit" class="btn btn-danger" value="<spring:message code="articleInfo.delete"/>"
+                   onclick="return confirm('<spring:message code="articleInfo.onclick.delete"/>')"/>
         </sec:authorize>
     </form:form>
 </div>
@@ -42,15 +42,14 @@
 <center>
     <div class="card-text-center">
         <br/>
-        <form:form action="${pageContext.request.contextPath}/user/articleInfo/${article.id}" modelAttribute="comment"
-                   method="post">
+        <form:form action="${pageContext.request.contextPath}/user/articleInfo/${article.id}"
+                   modelAttribute="comment" method="post">
             <div class="form-group">
                 <label for="userInfo">${pageContext.request.userPrincipal.name}</label>
-                <form:textarea path="text" class="form-control" id="userInfo" rows="3"
-                               placeholder="Enter your text"/>
-                <form:errors path="text"/>
+                <form:textarea path="text" class="form-control" id="userInfo" rows="3"/>
+                <form:errors path="text" cssClass="badge badge-danger"/>
             </div>
-            <input type="submit" class="btn btn-primary" value="<spring:message code="button.save"/>"/>
+            <input type="submit" class="btn btn-primary" value="<spring:message code="articleInfo.button.save"/>"/>
         </form:form>
 
         <br/>
@@ -61,7 +60,6 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">${comment.text}</p>
-                        <%--        <a href="#" class="btn btn-primary">Reply</a>--%>
                 </div>
             </div>
             <br/>

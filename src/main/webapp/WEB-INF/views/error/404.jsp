@@ -3,6 +3,7 @@
           uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
@@ -12,8 +13,8 @@
 <body>
 
 <div class="jumbotron">
-    <h1 class="display-4">Oops!</h1>
-    <p class="lead"><c:out value="${message}"/></p>
+    <h1 class="display-4"><spring:message code="404.header"/></h1>
+    <p class="lead"><h2><spring:message code="404.message"/></h2></p>
 </div>
 </body>
 

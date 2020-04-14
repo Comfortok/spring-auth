@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <head>
-    <title>Role Adding</title>
+    <title><spring:message code="changeRole.title"/></title>
     <c:import url="../header.jsp" charEncoding="UTF-8"/>
 </head>
 
@@ -14,26 +14,24 @@
 <center>
     <div class="card-text-center">
         <form:form method="POST" modelAttribute="user" action="${pageContext.request.contextPath}/admin/addRole">
-            <h2>Add admin role to user</h2>
+            <h2><spring:message code="changeRole.header"/></h2>
             <spring:bind path="username">
-                <label for="username">Username</label>
+                <label for="username"><spring:message code="changeRole.username"/></label>
                 <form:input type="text" path="username" cssClass="form-control" id="username" name="username"
                             pattern="^[a-zA-Z0-9]+$" title="Digits and numbers only" required="required"/>
-                    <c:if test="${status.error != null}">
-                        <div class="alert alert-primary" role="alert">
-                            <form:errors path="username"/>
-                            <form:errors path="roles"/>
-                            <META http-equiv="refresh" content="3; URL=showUsers">
-                        </div>
-                    </c:if>
+                <form:errors path="username" cssClass="badge badge-danger"/>
+                <form:errors path="roles" cssClass="badge badge-danger"/>
+                <META http-equiv="refresh" content="3; URL=showUsers">
                 <br>
             </spring:bind>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">
+                <spring:message code="changeRole.button.submit"/>
+            </button>
         </form:form>
 
         <c:if test="${not empty alert}">
             <div class="alert alert-primary" role="alert">
-                <c:out value="${alert}"/>
+                <spring:message code="changeRole.alert"/>
             </div>
             <META http-equiv="refresh" content="3; URL=showUsers">
         </c:if>

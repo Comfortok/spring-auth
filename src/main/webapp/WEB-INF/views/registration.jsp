@@ -6,42 +6,40 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <head>
-    <title>Registration</title>
+    <title><spring:message code="registration.title"/></title>
     <c:import url="header.jsp" charEncoding="UTF-8"/>
 </head>
 
 <body>
-<h3>Reg Form. Checking body tag</h3>
 <center>
     <div class="card-text-center">
         <form:form method="POST" modelAttribute="userForm" action="${pageContext.request.contextPath}/registration">
-            <h2>Create your account</h2>
+            <h2><spring:message code="registration.form"/></h2>
             <spring:bind path="username">
-                <label for="username">Username</label>
+                <label for="username"><spring:message code="registration.username"/></label>
                 <form:input type="text" path="username" cssClass="form-control" id="username" name="username"
-                            pattern="^[a-zA-Z0-9]+$" title="Digits and numbers only" required="required"/>
-                <form:errors path="username" cssClass="error"/>
+                            required="required"/>
+                <form:errors path="username" cssClass="badge badge-danger"/>
                 <br>
             </spring:bind>
 
             <spring:bind path="password">
-                <label for="password">Password</label>
+                <label for="password"><spring:message code="registration.password"/></label>
                 <form:input type="password" path="password" cssClass="form-control" id="password" name="password"
-                            title="Digits and numbers only" pattern="^[a-zA-Z0-9]+$" required="required"/>
-                <form:errors path="password" cssClass="error"/>
+                            required="required"/>
+                <form:errors path="password" cssClass="badge badge-danger"/>
                 <br>
             </spring:bind>
 
             <spring:bind path="confirmPassword">
                 <div class="form-group">
-                    <label for="confirmPassword">Confirm password</label>
+                    <label for="confirmPassword"><spring:message code="registration.confirmPassword"/></label>
                     <form:input type="password" path="confirmPassword" cssClass="form-control" id="confirmPassword"
-                                name="confirmPassword" title="Digits and numbers only" pattern="^[a-zA-Z0-9]+$"
-                                required="required"/>
-                    <form:errors path="confirmPassword" cssClass="error"/>
+                                name="confirmPassword" required="required"/>
+                    <form:errors path="confirmPassword" cssClass="badge badge-danger"/>
                 </div>
             </spring:bind>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary"><spring:message code="registration.button.send"/></button>
         </form:form>
     </div>
 </center>

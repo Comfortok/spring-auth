@@ -34,7 +34,6 @@ public class UserRepositoryImpl implements UserRepository {
                 .setParameter(1, user.getUsername())
                 .setParameter(2, user.getPassword())
                 .executeUpdate();
-//        sessionFactory.getCurrentSession().save(user);
         System.out.println("User dao. A user was created with email " + user.getUsername());
     }
 

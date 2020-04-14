@@ -3,12 +3,10 @@ package com.ok.authorization.controller;
 import com.ok.authorization.exception.ArticleNotFoundException;
 import com.ok.authorization.model.Article;
 import com.ok.authorization.model.Comment;
-import com.ok.authorization.model.Role;
 import com.ok.authorization.model.User;
 import com.ok.authorization.service.ArticleService;
 import com.ok.authorization.service.CommentService;
 import com.ok.authorization.validation.ArticleValidator;
-import com.ok.authorization.validation.CommentValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -19,15 +17,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Set;
 
 @Controller
 public class ArticleController {
@@ -40,9 +37,6 @@ public class ArticleController {
 
     @Autowired
     private ArticleValidator articleValidator;
-
-    @Autowired
-    private CommentValidator commentValidator;
 
     @RequestMapping(value = "/user/articles", method = RequestMethod.GET)
     public String listArticles(Model model) {
@@ -59,10 +53,10 @@ public class ArticleController {
     }
 
     @PostMapping(value = "/admin/articles/save")
-    public String addArticle(@Valid @ModelAttribute("article") Article article, BindingResult bindingResult) {
+    public String addArticle(@Valid @ModelAttribute("article") Article article, BindingResult bindingResult, Errors errors) {
         articleValidator.validate(article, bindingResult);
 
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors() || errors.hasErrors()) {
             return "admin/addForm";
         }
 
@@ -137,11 +131,9 @@ public class ArticleController {
     }
 
     @PostMapping(value = "user/articleInfo/{id}")
-    public String addComment(@ModelAttribute("comment") Comment comment, BindingResult bindingResult,
+    public String addComment(@Valid @ModelAttribute("comment") Comment comment, Errors errors,
                              @PathVariable("id") long id, Model model) {
-        commentValidator.validate(comment, bindingResult);
-
-        if (bindingResult.hasErrors()) {
+        if (errors.hasErrors()) {
             return articleInfo(id, model, comment);
         }
 

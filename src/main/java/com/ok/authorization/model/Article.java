@@ -18,9 +18,13 @@ public class Article {
     private long id;
 
     @Column(name = "header")
+    @NotEmpty
+    @Size(min = 2, max = 100, message = "{validation.header.length}")
     private String header;
 
     @Column(name = "text")
+    @NotEmpty
+    @Size(min = 2, max = 2500, message = "{validation.text.length}")
     private String text;
 
     @Column(name = "release_date")

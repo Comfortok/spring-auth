@@ -7,43 +7,44 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <head>
-    <title>Login Page</title>
+    <title><spring:message code="login.title"/></title>
     <c:import url="header.jsp" charEncoding="UTF-8"/>
 </head>
 
 <body onload='document.loginForm.username.focus();'>
-<h1>Login Form</h1>
 <center>
+    <h1><spring:message code="login.form"/></h1>
     <div class="card-text-center">
         <form action="${pageContext.request.contextPath}/login" method="post">
             <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username"><spring:message code="login.username"/></label>
                 <input type="text" class="form-control" id="username" name="username" required
-                       aria-describedby="usernameHelp" placeholder="Enter username">
-                <small id="usernameHelp" class="form-text text-muted">Latin alphabet and digits only.</small>
+                       aria-describedby="usernameHelp">
+                <small id="usernameHelp" class="form-text text-muted">
+                    <spring:message code="login.username.help"/></small>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required
-                       placeholder="Password">
+                <label for="password"><spring:message code="login.password"/></label>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
 
             <c:choose>
                 <c:when test="${not empty error}">
                     <div class="alert alert-danger" role="alert">
-                        <c:out value="${error}"/>
+                        <spring:message code="login.message.error"/>
                     </div>
                 </c:when>
-                <c:when test="${not empty msg}">
+                <c:when test="${not empty logout}">
                     <div class="alert alert-primary" role="alert">
-                        <c:out value="${msg}"/>
+                        <spring:message code="login.message.logout"/>
                     </div>
                 </c:when>
             </c:choose>
 
             <input type="hidden" name="${_csrf.parameterName}"
                    value="${_csrf.token}"/>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">
+                <spring:message code="login.button.submit"/></button>
         </form>
     </div>
 </center>

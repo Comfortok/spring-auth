@@ -1,8 +1,6 @@
 package com.ok.authorization.validation;
 
-import com.ok.authorization.model.Role;
 import com.ok.authorization.model.User;
-import com.ok.authorization.service.RoleService;
 import com.ok.authorization.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

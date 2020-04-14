@@ -21,38 +21,27 @@
             </c:if>
 
             <spring:bind path="header">
-                <label for="header">Header</label>
+                <label for="header"><spring:message code="addForm.header"/></label>
                 <form:input type="text" path="header" cssClass="form-control" id="header" name="header"
                             required="required"/>
-                <form:errors path="header" cssClass="error"/>
+                <form:errors path="header" cssClass="badge badge-danger"/>
                 <br>
             </spring:bind>
 
             <spring:bind path="releaseDate">
                 <form:hidden path="releaseDate"/>
-<%--                <input id="releaseDate" name="releaseDate" type="hidden"--%>
-<%--                       value="<fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm"--%>
-<%--                                value="${currentDate}"/>"/>--%>
-<%--                <fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm"--%>
-<%--                                value="${currentDate}"/>--%>
-
-<%--                <label for="releaseDate">Date</label>--%>
-<%--                <form:input type="text" path="releaseDate" cssClass="form-control" id="releaseDate" name="releaseDate"--%>
-<%--                            required="required" pattern="^\d{4}-\d{2}-\d{2}$" title="yyyy-MM-dd"/>--%>
-<%--                <form:errors path="releaseDate" cssClass="error"/>--%>
-<%--                <br>--%>
             </spring:bind>
 
             <spring:bind path="text">
-                <label for="text">Text</label>
+                <label for="text"><spring:message code="addForm.text"/></label>
                 <form:textarea path="text" rows="5" cols="40" cssClass="form-control" id="text" name="text"
-                            required="required"/>
-                <form:errors path="text" cssClass="error"/>
+                               required="required"/>
+                <form:errors path="text" cssClass="badge badge-danger"/>
                 <br>
             </spring:bind>
 
             <button type="submit" class="btn btn-primary">
-                <spring:message code="button.save"/>
+                <spring:message code="addForm.save"/>
             </button>
         </form:form>
     </div>

@@ -2,6 +2,9 @@ package com.ok.authorization.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -11,11 +14,15 @@ public class User {
     @Id
     @Column(name = "username", unique = true,
     nullable = false)
-    @NotEmpty(message = "This field can not be empty")
+    @NotEmpty(message = "{validation.field.required}")
+    @Size(min = 4, max = 32, message = "{validation.username.size}")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "{validation.username.format}")
     private String username;
 
-    @NotEmpty(message = "This field can not be empty")
+    @NotEmpty(message = "{validation.field.required}")
     @Column(name = "password", nullable = false)
+    @Size(min = 4, max = 32, message = "{validation.password.size}")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "{validation.password.format}")
     private String password;
 
     @Column(name = "enabled", nullable = false)
@@ -25,6 +32,9 @@ public class User {
     private Set<Role> roles;
 
     @Transient
+    @NotEmpty(message = "{validation.field.required}")
+    @Size(min = 4, max = 32, message = "{validation.password.size}")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "{validation.password.format}")
     private String confirmPassword;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

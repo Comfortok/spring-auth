@@ -20,7 +20,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    @Transactional//remove id, replace with comment.getArticle
+    @Transactional
     public void createComment(Comment comment, long id) {
         this.commentRepository.createComment(comment, id);
     }
