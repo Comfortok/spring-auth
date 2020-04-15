@@ -11,6 +11,9 @@
 			<h2><spring:message code="403.username"/> ${username}
 				<br/><spring:message code="403.message"/></h2>
 		</c:when>
+		<c:otherwise>
+			<spring:message code="403.message"/>
+		</c:otherwise>
 	</c:choose>
 
 </body>

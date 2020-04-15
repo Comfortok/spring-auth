@@ -2,6 +2,7 @@ package com.ok.authorization.repository;
 
 import com.ok.authorization.model.Article;
 import com.ok.authorization.model.Comment;
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,53 +18,76 @@ import java.util.List;
 @Repository
 @Transactional
 public class CommentRepositoryImpl implements CommentRepository {
-
     private static final Logger logger = LoggerFactory.getLogger(CommentRepositoryImpl.class);
 
-    private SessionFactory sessionFactory;
-
     @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private SessionFactory sessionFactory;
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
     public void createComment(Comment comment, long id) {
-        entityManager.createNativeQuery("INSERT INTO COMMENTS(TEXT, ARTICLE_ID, USERNAME) VALUES(?, ?, ?)")
-                .setParameter(1, comment.getText())
-                .setParameter(2, id)
-                .setParameter(3, comment.getUser().getUsername())
-                .executeUpdate();
-        System.out.println("Comment dao. Comment was created with id " + comment.getId());
-        logger.info("Comment " + comment + " is successfully created.");
+        logger.warn("Adding a comment to database with id " + id);
+        try {
+            entityManager.createNativeQuery("INSERT INTO COMMENTS(TEXT, ARTICLE_ID, USERNAME) VALUES(?, ?, ?)")
+                    .setParameter(1, comment.getText())
+                    .setParameter(2, id)
+                    .setParameter(3, comment.getUser().getUsername())
+                    .executeUpdate();
+        } catch (Exception e) {
+            logger.error("An exception has happened while adding a comment. ", e);
+        }
+        logger.info("A comment with id " + comment.getId() + " is successfully added.");
     }
 
     @Override
     public void removeComment(long id) {
+        logger.warn("Getting a comment with id " + id + " to delete");
         Comment comment = getCommentById(id);
-        sessionFactory.getCurrentSession().delete(comment);
-        logger.info("Comment " + comment + " is successfully removed.");
+        try {
+            sessionFactory.getCurrentSession().delete(comment);
+        } catch (HibernateException e) {
+            logger.error("An exception has happened while deleting a comment. ", e);
+        }
+        logger.info("A comment with id " + comment.getId() + " is successfully deleted.");
     }
 
     @Override
     public void editComment(Comment comment) {
-        sessionFactory.getCurrentSession().merge(comment);
-        logger.info("Comment " + comment + " is successfully updated.");
+        logger.warn("Editing a comment with id " + comment.getId());
+        try {
+            sessionFactory.getCurrentSession().merge(comment);
+        } catch (HibernateException e) {
+            logger.error("An exception has happened while editing a comment. ", e);
+        }
+        logger.info("Comment with id " + comment.getId() + " is successfully updated.");
     }
 
     @Override
     public Comment getCommentById(long id) {
-        return sessionFactory.getCurrentSession().get(Comment.class, id);
+        logger.warn("Getting a comment from database with id " + id);
+        Comment comment = null;
+        try {
+            comment = sessionFactory.getCurrentSession().get(Comment.class, id);
+        } catch (HibernateException e) {
+            logger.error("An exception has happened while getting a comment with id " + id, e);
+        }
+        logger.info("Comment with id " + id + " is successfully loaded.");
+        return comment;
     }
 
     @Override
     public List<Comment> getAllComments(Article article) {
-        Query query = sessionFactory.getCurrentSession().getNamedQuery("getCommentsByArticleId");
-        query.setParameter("id", article.getId());
-        List<Comment> result = query.getResultList();
+        List<Comment> result = null;
+        logger.warn("Getting all comments from database");
+        try {
+            Query query = sessionFactory.getCurrentSession().getNamedQuery("getCommentsByArticleId");
+            query.setParameter("id", article.getId());
+            result = query.getResultList();
+        } catch (HibernateException e) {
+            logger.error("An exception has happened while getting all comments from database. ", e);
+        }
         logger.info("All comments are successfully loaded.");
         return result;
     }

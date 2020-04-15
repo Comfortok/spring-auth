@@ -3,6 +3,8 @@ package com.ok.authorization.service;
 import com.ok.authorization.model.Role;
 import com.ok.authorization.model.User;
 import com.ok.authorization.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,6 +21,7 @@ import java.util.Set;
 
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
+    private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -26,13 +29,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("userDetails.loadUserByUsername");
-        User user = userRepository.findByUserName(username);
-
-        System.out.println("User loaded. User: " + user);
-
+        User user = null;
+        logger.warn("Finding a user by username " + username);
+        try {
+            user = userRepository.findByUserName(username);
+        } catch (Exception e) {
+            logger.error("An exception has happened while finding a user. ", e);
+        }
+        logger.info("A user with username " + username + " has successfully loaded.");
         List<GrantedAuthority> authorities = buildUserAuthority(user.getRoles());
-
         return buildUserForAuthentication(user, authorities);
     }
 
@@ -43,14 +48,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private List<GrantedAuthority> buildUserAuthority(Set<Role> roles) {
         Set<GrantedAuthority> authoritySet = new HashSet<>();
-
         for (Role role : roles) {
             authoritySet.add(new SimpleGrantedAuthority(role.getRole()));
         }
-
         List<GrantedAuthority> result = new ArrayList<>(authoritySet);
         return result;
     }
-
-
 }

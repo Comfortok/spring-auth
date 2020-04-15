@@ -7,6 +7,8 @@ import com.ok.authorization.model.User;
 import com.ok.authorization.service.ArticleService;
 import com.ok.authorization.service.CommentService;
 import com.ok.authorization.validation.ArticleValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -28,6 +30,7 @@ import java.util.Date;
 
 @Controller
 public class ArticleController {
+    private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
 
     @Autowired
     private ArticleService articleService;
@@ -40,6 +43,7 @@ public class ArticleController {
 
     @RequestMapping(value = "/user/articles", method = RequestMethod.GET)
     public String listArticles(Model model) {
+        logger.info("Getting 'user/articles' page.");
         model.addAttribute("article", new Article());
         model.addAttribute("listArticles", this.articleService.getAllArticles());
         return "user/articles";
@@ -49,16 +53,20 @@ public class ArticleController {
     public void dataBinding(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         dateFormat.setLenient(false);
-        binder.registerCustomEditor(Date.class, "releaseDate", new CustomDateEditor(dateFormat, true));
+        binder.registerCustomEditor(Date.class, "releaseDate",
+                new CustomDateEditor(dateFormat, true));
     }
 
     @PostMapping(value = "/admin/articles/save")
-    public String addArticle(@Valid @ModelAttribute("article") Article article, BindingResult bindingResult, Errors errors) {
+    public String addArticle(@Valid @ModelAttribute("article") Article article,
+                             BindingResult bindingResult, Errors errors) {
+        logger.info("Getting 'admin/articles/save' page.");
+        logger.info("Validating an article.");
         articleValidator.validate(article, bindingResult);
-
         if (bindingResult.hasErrors() || errors.hasErrors()) {
             return "admin/addForm";
         }
+        logger.info("Validation successfully completed. No errors found.");
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
@@ -66,7 +74,6 @@ public class ArticleController {
             User user = new User();
             user.setUsername(userDetail.getUsername());
             article.setUser(user);
-            System.out.println("Logged: " + userDetail);
         }
         if (article.getId() == 0) {
             this.articleService.createArticle(article);
@@ -78,19 +85,21 @@ public class ArticleController {
 
     @RequestMapping("/admin/add")
     public String newArticleForm(@ModelAttribute("article") Article article, Model model) {
-        System.out.println(article.getId() + " -- id");
+        logger.info("Getting 'admin/add' page.");
         model.addAttribute(article);
         return "admin/addForm";
     }
 
     @RequestMapping(value = "/admin/remove/{id}", method = RequestMethod.POST)
     public String removeArticle(@PathVariable("id") long id) {
+        logger.info("Getting 'admin/remove' page.");
         this.articleService.removeArticle(id);
         return "redirect:/user/articles";
     }
 
     @RequestMapping(value = "/admin/edit/{id}", method = {RequestMethod.POST, RequestMethod.GET})
     public String editArticle(@PathVariable("id") long id, Model model) {
+        logger.info("Getting 'admin/edit' page.");
         model.addAttribute("article", this.articleService.getArticleById(id));
         return "admin/addForm";
     }
@@ -98,10 +107,12 @@ public class ArticleController {
     @RequestMapping(value = "user/articleInfo/{id}", method = RequestMethod.GET)
     public String articleInfo(@PathVariable("id") long id, Model model,
                               @ModelAttribute("comment") Comment comment) {
+        logger.info("Getting 'user/articleInfo' page.");
         Article article;
         try {
             article = this.articleService.getArticleById(id);
         } catch (RuntimeException e) {
+            logger.error("ArticleNotFoundException has happened. ", e);
             throw new ArticleNotFoundException(id);
         }
         model.addAttribute("article", article);
@@ -111,7 +122,6 @@ public class ArticleController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
-            System.out.println("Username on comment: " + userDetail);
             model.addAttribute("username", userDetail.getUsername());
         }
         return "user/articleInfo";
@@ -119,12 +129,15 @@ public class ArticleController {
 
     @RequestMapping(value = "/admin/remove", method = RequestMethod.POST)
     public String remove(HttpServletRequest request, ModelMap modelMap) {
+        logger.info("Getting an articleId in remove method.");
         String[] articleId = request.getParameterValues("articleId");
         if (articleId != null) {
+            logger.info("articleId is correct.");
             for (String id : articleId) {
                 this.articleService.removeArticle(Integer.parseInt(id));
             }
         } else {
+            logger.error("articleId is null.");
             modelMap.put("error", "error in remove method");
         }
         return "redirect:/user/articles";
@@ -133,9 +146,12 @@ public class ArticleController {
     @PostMapping(value = "user/articleInfo/{id}")
     public String addComment(@Valid @ModelAttribute("comment") Comment comment, Errors errors,
                              @PathVariable("id") long id, Model model) {
+        logger.info("Comment validation started.");
         if (errors.hasErrors()) {
+            logger.error("There are some errors while adding a comment.");
             return articleInfo(id, model, comment);
         }
+        logger.info("Comment validation ended. Everything is correct.");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {

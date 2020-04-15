@@ -15,10 +15,6 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private CommentRepository commentRepository;
 
-    public void setCommentDao(CommentRepository commentDao) {
-        this.commentRepository = commentDao;
-    }
-
     @Override
     @Transactional
     public void createComment(Comment comment, long id) {

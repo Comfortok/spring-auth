@@ -2,9 +2,10 @@ package com.ok.authorization.service;
 
 import com.ok.authorization.model.Article;
 import com.ok.authorization.repository.ArticleRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
+    private static final Logger logger = LoggerFactory.getLogger(ArticleServiceImpl.class);
 
     @Autowired
     private ArticleRepository articleRepository;
@@ -23,7 +25,9 @@ public class ArticleServiceImpl implements ArticleService {
     @CacheEvict(value = "articles", allEntries = true)
     public void createArticle(Article article)
     {
+        logger.info("Setting a current date to an article with id " + article.getId());
         article.setReleaseDate(new Date());
+        logger.info("Current date is " + article.getReleaseDate());
         this.articleRepository.createArticle(article);
     }
 
@@ -45,7 +49,6 @@ public class ArticleServiceImpl implements ArticleService {
     @Transactional
     @Cacheable("articles")
     public Article getArticleById(long id) {
-        System.out.println("getting an article in service");
         return this.articleRepository.getArticleById(id);
     }
 
@@ -53,7 +56,6 @@ public class ArticleServiceImpl implements ArticleService {
     @Transactional
     @Cacheable("articles")
     public List<Article> getAllArticles() {
-        System.out.println("getting all articles is service");
         return this.articleRepository.getAllArticles();
     }
 }

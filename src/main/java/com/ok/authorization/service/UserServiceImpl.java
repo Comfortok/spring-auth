@@ -2,6 +2,8 @@ package com.ok.authorization.service;
 
 import com.ok.authorization.model.User;
 import com.ok.authorization.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -26,9 +29,9 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void createUser(User user) {
-        System.out.println("create user in UserService");
+        logger.warn("Password encoding for user " + user.getUsername());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        System.out.println("user.setRoles... ");
+        logger.info("Password for user " + user.getUsername() + " has successfully encoded.");
         userRepository.createUser(user);
     }
 

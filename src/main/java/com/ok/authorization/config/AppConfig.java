@@ -2,11 +2,11 @@ package com.ok.authorization.config;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -27,7 +27,10 @@ import java.util.Properties;
 @ComponentScan( {"com.ok.authorization.*"} )
 @EnableTransactionManagement
 @Import( { SecurityConfig.class, CacheConfig.class } )
+@PropertySource("classpath:db.properties")
 public class AppConfig implements WebMvcConfigurer {
+    @Autowired
+    private Environment environment;
 
     @Bean
     public SessionFactory sessionFactory() {
@@ -40,10 +43,10 @@ public class AppConfig implements WebMvcConfigurer {
     @Bean(name = "dataSource")
     public BasicDataSource dataSource() {
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        basicDataSource.setUrl("jdbc:mysql://localhost:3306/news?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC");//&useUnicode=true&characterEncoding=utf8
-        basicDataSource.setUsername("root");
-        basicDataSource.setPassword("admin");
+        basicDataSource.setDriverClassName(environment.getProperty("mysql.driver"));
+        basicDataSource.setUrl(environment.getProperty("mysql.jdbcUrl"));
+        basicDataSource.setUsername(environment.getProperty("mysql.username"));
+        basicDataSource.setPassword(environment.getProperty("mysql.password"));
         return basicDataSource;
     }
 
