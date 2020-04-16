@@ -29,12 +29,12 @@ public class MainController {
         ModelAndView model = new ModelAndView();
         if (error != null) {
             logger.error("Error has happened. Invalid credentials or disabled account.");
-            model.addObject("error", "Invalid credentials or your account is disabled.");
+            model.addObject("error", "true");
         }
 
         if (logout != null) {
             logger.info("A user has been successfully logged out.");
-            model.addObject("logout", "You've been logged out successfully.");
+            model.addObject("logout", "true");
         }
         return model;
     }

@@ -12,6 +12,7 @@ import org.springframework.validation.Validator;
 @Component
 public class RoleValidator implements Validator {
     private static final Logger logger = LoggerFactory.getLogger(RoleValidator.class);
+    private static final String ROLE_ADMIN = "ROLE_ADMIN";
 
     @Autowired
     private UserService userService;
@@ -30,7 +31,7 @@ public class RoleValidator implements Validator {
         } else {
             userService.findByUserName(user.getUsername()).getRoles()
                     .stream()
-                    .filter(u -> u.getRole().equalsIgnoreCase("ROLE_ADMIN"))
+                    .filter(u -> u.getRole().equalsIgnoreCase(ROLE_ADMIN))
                     .findFirst().ifPresent(role -> {
                 errors.rejectValue("roles", "validation.role.adminRoleIsAlreadyGiven");
                 logger.error("User with username " + user.getUsername() + " has already had an admin rights.");

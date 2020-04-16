@@ -19,6 +19,9 @@ import java.util.List;
 @Transactional
 public class CommentRepositoryImpl implements CommentRepository {
     private static final Logger logger = LoggerFactory.getLogger(CommentRepositoryImpl.class);
+    private static final String INSERT_COMMENT_TO_DB = "INSERT INTO COMMENTS(TEXT, ARTICLE_ID, USERNAME) " +
+            "VALUES(?, ?, ?)";
+    private static final String GET_ALL_COMMENTS_BY_ARTICLE_ID = "getCommentsByArticleId";
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -30,7 +33,7 @@ public class CommentRepositoryImpl implements CommentRepository {
     public void createComment(Comment comment, long id) {
         logger.warn("Adding a comment to database with id " + id);
         try {
-            entityManager.createNativeQuery("INSERT INTO COMMENTS(TEXT, ARTICLE_ID, USERNAME) VALUES(?, ?, ?)")
+            entityManager.createNativeQuery(INSERT_COMMENT_TO_DB)
                     .setParameter(1, comment.getText())
                     .setParameter(2, id)
                     .setParameter(3, comment.getUser().getUsername())
@@ -82,7 +85,7 @@ public class CommentRepositoryImpl implements CommentRepository {
         List<Comment> result = null;
         logger.warn("Getting all comments from database");
         try {
-            Query query = sessionFactory.getCurrentSession().getNamedQuery("getCommentsByArticleId");
+            Query query = sessionFactory.getCurrentSession().getNamedQuery(GET_ALL_COMMENTS_BY_ARTICLE_ID);
             query.setParameter("id", article.getId());
             result = query.getResultList();
         } catch (HibernateException e) {

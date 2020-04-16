@@ -3,7 +3,6 @@ package com.ok.authorization.config;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
@@ -29,6 +28,7 @@ import java.util.Properties;
 @Import( { SecurityConfig.class, CacheConfig.class } )
 @PropertySource("classpath:db.properties")
 public class AppConfig implements WebMvcConfigurer {
+
     @Autowired
     private Environment environment;
 

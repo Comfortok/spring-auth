@@ -24,6 +24,8 @@ import java.util.List;
 @Controller
 public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final String ROLE_USER = "ROLE_USER";
+    private static final String ROLE_ADMIN = "ROLE_ADMIN";
 
     @Autowired
     private UserService userService;
@@ -56,7 +58,7 @@ public class UserController {
         userService.createUser(userForm);
         Role role = new Role();
         role.setUser(userForm);
-        role.setRole("ROLE_USER");
+        role.setRole(ROLE_USER);
         roleService.addRole(role);
         return "redirect:/login";
     }
@@ -68,7 +70,7 @@ public class UserController {
         List<User> users = userService.getAllUsers();
         model.addAttribute("userList", users);
         users.forEach(u -> u.getRoles().forEach(r -> {
-                    if (r.getRole().equalsIgnoreCase("ROLE_ADMIN")) {
+                    if (r.getRole().equalsIgnoreCase(ROLE_ADMIN)) {
                         model.addAttribute("adminRights", "admin");
                     }
                 }
@@ -110,7 +112,7 @@ public class UserController {
         role.setUser(user);
         role.setRole("ROLE_ADMIN");
         roleService.addRole(role);
-        model.addAttribute("alert", "ROLE_ADMIN added");
+        model.addAttribute("alert", "true");
         return "admin/changeRole";
     }
 }

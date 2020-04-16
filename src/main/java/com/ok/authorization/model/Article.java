@@ -2,7 +2,6 @@ package com.ok.authorization.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
@@ -30,7 +29,7 @@ public class Article {
     @Column(name = "release_date")
     private Date releaseDate;
 
-    @ManyToOne//FIX IT
+    @ManyToOne
     @JoinColumn(name = "username")
     private User user;
 

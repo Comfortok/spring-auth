@@ -17,6 +17,10 @@ import java.util.List;
 @Transactional
 public class UserRepositoryImpl implements UserRepository {
     private static final Logger logger = LoggerFactory.getLogger(UserRepositoryImpl.class);
+    private static final String INSERT_USER_TO_DB = "INSERT INTO USERS (USERNAME, PASSWORD) VALUES(?,?)";
+    private static final String GET_ALL_USERS = "from User";
+    private static final String ENABLE_USER_BY_USERNAME = "UPDATE users SET enabled = 1 WHERE username = ?";
+    private static final String DISABLE_USER_BY_USERNAME = "UPDATE users SET enabled = 0 WHERE username = ?";
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -42,7 +46,7 @@ public class UserRepositoryImpl implements UserRepository {
     public void createUser(User user) {
         logger.warn("Adding a user to the database with username " + user.getUsername());
         try {
-            entityManager.createNativeQuery("INSERT INTO USERS (USERNAME, PASSWORD) VALUES(?,?)")
+            entityManager.createNativeQuery(INSERT_USER_TO_DB)
                     .setParameter(1, user.getUsername())
                     .setParameter(2, user.getPassword())
                     .executeUpdate();
@@ -58,7 +62,7 @@ public class UserRepositoryImpl implements UserRepository {
         List<User> users = null;
         logger.warn("Getting all users from the database.");
         try {
-            users = sessionFactory.getCurrentSession().createQuery("from User").list();
+            users = sessionFactory.getCurrentSession().createQuery(GET_ALL_USERS).list();
         } catch (HibernateException e) {
             logger.error("An exception has happened while getting all users from the database. ", e);
         }
@@ -70,7 +74,7 @@ public class UserRepositoryImpl implements UserRepository {
     public void enableUser(String username) {
         logger.warn("Enabling a user with username " + username);
         try {
-            entityManager.createNativeQuery("UPDATE users SET enabled = 1 WHERE username = ?")
+            entityManager.createNativeQuery(ENABLE_USER_BY_USERNAME)
                     .setParameter(1, username)
                     .executeUpdate();
         } catch (Exception e) {
@@ -83,7 +87,7 @@ public class UserRepositoryImpl implements UserRepository {
     public void disableUser(String username) {
         logger.warn("Disabling a user with username " + username);
         try {
-            entityManager.createNativeQuery("UPDATE users SET enabled = 0 WHERE username = ?")
+            entityManager.createNativeQuery(DISABLE_USER_BY_USERNAME)
                     .setParameter(1, username)
                     .executeUpdate();
         } catch (Exception e) {

@@ -16,7 +16,7 @@ public class CustomGlobalExceptionHandler {
     public ModelAndView handle() {
         ModelAndView model = new ModelAndView();
         model.setViewName("error/404");
-        model.addObject("message", "Article not found");
+        model.addObject("message", "true");
         return model;
     }
 

@@ -21,6 +21,13 @@ import java.util.List;
 @Transactional
 public class ArticleRepositoryImpl implements ArticleRepository {
     private static final Logger logger = LoggerFactory.getLogger(ArticleRepositoryImpl.class);
+    private static final String INSERT_ARTICLE_TO_DB = "INSERT INTO ARTICLE(HEADER, TEXT, RELEASE_DATE, USERNAME) " +
+            "VALUES(?,?,?,?)";
+    private static final String ARTICLE_HEADER = "header";
+    private static final String ARTICLE_TEXT = "text";
+    private static final String ARTICLE_DATE = "releaseDate";
+    private static final String ARTICLE_ID = "id";
+    private static final String SELECT_ALL_ARTICLES_FROM_DB = "select e from Article e order by e.releaseDate desc";
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -32,7 +39,7 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     public void createArticle(Article article) {
         logger.warn("Adding an article to database with id " + article.getId());
         try {
-            entityManager.createNativeQuery("INSERT INTO ARTICLE(HEADER, TEXT, RELEASE_DATE, USERNAME) VALUES(?,?,?,?)")
+            entityManager.createNativeQuery(INSERT_ARTICLE_TO_DB)
                     .setParameter(1, article.getHeader())
                     .setParameter(2, article.getText())
                     .setParameter(3, article.getReleaseDate())
@@ -66,10 +73,10 @@ public class ArticleRepositoryImpl implements ArticleRepository {
             CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
             CriteriaUpdate<Article> update = criteriaBuilder.createCriteriaUpdate(Article.class);
             Root<Article> root = update.from(Article.class);
-            update.set(root.get("header"), article.getHeader());
-            update.set(root.get("text"), article.getText());
-            update.set((root.get("releaseDate")), article.getReleaseDate());
-            update.where(criteriaBuilder.equal(root.get("id"), article.getId()));
+            update.set(root.get(ARTICLE_HEADER), article.getHeader());
+            update.set(root.get(ARTICLE_TEXT), article.getText());
+            update.set((root.get(ARTICLE_DATE)), article.getReleaseDate());
+            update.where(criteriaBuilder.equal(root.get(ARTICLE_ID), article.getId()));
             this.entityManager.createQuery(update).executeUpdate();
         } catch (Exception e) {
             logger.error("An exception has happened while editing an article. ", e);
@@ -83,7 +90,7 @@ public class ArticleRepositoryImpl implements ArticleRepository {
         logger.warn("Getting an article from database with id " + id);
         try {
             Query query = sessionFactory.getCurrentSession().getNamedQuery("getAnArticleById");
-            query.setParameter("id", id);
+            query.setParameter(ARTICLE_ID, id);
             result = query.getSingleResult();
         } catch (HibernateException e) {
             logger.error("An exception has happened while getting an article. ", e);
@@ -98,7 +105,7 @@ public class ArticleRepositoryImpl implements ArticleRepository {
         Query query = null;
         logger.warn("Getting all articles from database");
         try {
-             query = entityManager.createQuery("select e from Article e order by e.releaseDate desc");
+             query = entityManager.createQuery(SELECT_ALL_ARTICLES_FROM_DB);
         } catch (Exception e) {
             logger.error("An exception has happened while getting all articles. ", e);
         }

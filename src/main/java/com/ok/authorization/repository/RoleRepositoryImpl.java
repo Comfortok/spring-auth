@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContext;
 @Transactional
 public class RoleRepositoryImpl implements RoleRepository {
     private static final Logger logger = LoggerFactory.getLogger(RoleRepositoryImpl.class);
+    private static final String INSERT_USER_AND_ROLE_TO_DB = "INSERT INTO user_roles (USERNAME, ROLE) VALUES(?,?)";
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -29,7 +30,7 @@ public class RoleRepositoryImpl implements RoleRepository {
         String userRole = role.getRole();
         logger.warn("Adding " + username + " and its " + userRole + " role to database.");
         try {
-            entityManager.createNativeQuery("INSERT INTO user_roles (USERNAME, ROLE) VALUES(?,?)")
+            entityManager.createNativeQuery(INSERT_USER_AND_ROLE_TO_DB)
                     .setParameter(1, username)
                     .setParameter(2, userRole)
                     .executeUpdate();

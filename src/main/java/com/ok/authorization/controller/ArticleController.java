@@ -31,6 +31,7 @@ import java.util.Date;
 @Controller
 public class ArticleController {
     private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
+    private static final long HAS_NO_ID = 0;
 
     @Autowired
     private ArticleService articleService;
@@ -75,7 +76,7 @@ public class ArticleController {
             user.setUsername(userDetail.getUsername());
             article.setUser(user);
         }
-        if (article.getId() == 0) {
+        if (article.getId() == HAS_NO_ID) {
             this.articleService.createArticle(article);
         } else {
             this.articleService.editArticle(article);
