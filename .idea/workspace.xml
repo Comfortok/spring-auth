@@ -8,18 +8,15 @@
   <component name="ChangeListManager">
     <list default="true" id="a42aea81-6ef7-4149-bc2e-7c059e78a6b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/config/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/exception/CustomGlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/exception/CustomGlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/CommentRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/CommentRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/RoleRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/RoleRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/UserRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/validation/RoleValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/validation/RoleValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleServiceImpl.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +69,7 @@
       <list>
         <option value="Interface" />
         <option value="Jsp File" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -95,15 +93,35 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.other" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.ok.authorization.model" />
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.ok.authorization.service" />
+      <recent name="" />
+      <recent name="com.ok.authorization.controller" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.ok.authorization.controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\error" />
+      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\user" />
+      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\admin" />
+      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp" />
+      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\admin" />
@@ -112,12 +130,9 @@
       <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\java\com\ok\authorization\controller" />
       <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\java\com\ok\authorization\service" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\error" />
-      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\user" />
-      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF\views\admin" />
-      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp" />
-      <recent name="C:\Users\Olzhas\IdeaProjects\authorizationspring\src\main\webapp\WEB-INF" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ok.authorization.service" />
+      <recent name="com.ok.authorization.model" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -132,16 +147,82 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.TC4S">
-    <configuration name="Run" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.Run" />
+  <component name="RunManager" selected="JUnit.ArticleServiceImplTest">
+    <configuration name="ArticleServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="authorizationspring" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ok.authorization.*" />
+          <option name="PATTERN" value="com.ok.authorization.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.ok.authorization.service" />
+      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.ArticleServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArticleServiceImplTest.shouldCreateAnArticle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="authorizationspring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ok.authorization.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ok.authorization.service" />
+      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.ArticleServiceImplTest" />
+      <option name="METHOD_NAME" value="shouldCreateAnArticle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArticleServiceImplTest.shouldGetAllArticles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="authorizationspring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ok.authorization.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ok.authorization.service" />
+      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.ArticleServiceImplTest" />
+      <option name="METHOD_NAME" value="shouldGetAllArticles" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArticleServiceImplTest.shouldGetAnArticleById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="authorizationspring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ok.authorization.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ok.authorization.service" />
+      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.ArticleServiceImplTest" />
+      <option name="METHOD_NAME" value="shouldGetAnArticleById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ArticleServiceImplTest.shouldUpdateAnArticle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="authorizationspring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ok.authorization.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ok.authorization.service" />
+      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.ArticleServiceImplTest" />
+      <option name="METHOD_NAME" value="shouldUpdateAnArticle" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -220,12 +301,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Run" />
       <item itemvalue="Tomcat Server.TC4S" />
+      <item itemvalue="JUnit.ArticleServiceImplTest.shouldGetAnArticleById" />
+      <item itemvalue="JUnit.ArticleServiceImplTest.shouldGetAllArticles" />
+      <item itemvalue="JUnit.ArticleServiceImplTest.shouldCreateAnArticle" />
+      <item itemvalue="JUnit.ArticleServiceImplTest" />
+      <item itemvalue="JUnit.ArticleServiceImplTest.shouldUpdateAnArticle" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Run" />
+        <item itemvalue="JUnit.ArticleServiceImplTest" />
+        <item itemvalue="JUnit.ArticleServiceImplTest.shouldCreateAnArticle" />
+        <item itemvalue="JUnit.ArticleServiceImplTest.shouldUpdateAnArticle" />
+        <item itemvalue="JUnit.ArticleServiceImplTest.shouldGetAllArticles" />
+        <item itemvalue="JUnit.ArticleServiceImplTest.shouldGetAnArticleById" />
       </list>
     </recent_temporary>
   </component>
@@ -233,12 +322,7 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7358e7ca" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-          </expand>
+          <expand />
           <select />
         </treeState>
       </serviceView>
@@ -284,7 +368,13 @@
       <workItem from="1586866671637" duration="7122000" />
       <workItem from="1586939067130" duration="10803000" />
       <workItem from="1587020473454" duration="1308000" />
-      <workItem from="1587027719100" duration="2496000" />
+      <workItem from="1587027719100" duration="3248000" />
+      <workItem from="1587367800839" duration="4734000" />
+      <workItem from="1587447045615" duration="21369000" />
+      <workItem from="1587554986646" duration="2272000" />
+      <workItem from="1587557354209" duration="2703000" />
+      <workItem from="1587619306649" duration="11734000" />
+      <workItem from="1587707371995" duration="11405000" />
     </task>
     <servers />
   </component>

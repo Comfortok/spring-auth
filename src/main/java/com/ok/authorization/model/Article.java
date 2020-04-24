@@ -36,6 +36,18 @@ public class Article {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy = "article")
     private Set<Comment> comments;
 
+    public Article() {
+    }
+
+    public Article(long id, String header, String text, Date releaseDate, User user, Set<Comment> comments) {
+        this.id = id;
+        this.header = header;
+        this.text = text;
+        this.releaseDate = releaseDate;
+        this.user = user;
+        this.comments = comments;
+    }
+
     public long getId() {
         return id;
     }

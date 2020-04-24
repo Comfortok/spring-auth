@@ -1,7 +1,5 @@
 package com.ok.authorization.model;
 
-import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity
@@ -22,6 +20,12 @@ public class Role {
     private String role;
 
     public Role() {
+    }
+
+    public Role(long id, String role, User user) {
+        this.id = id;
+        this.role = role;
+        this.user = user;
     }
 
     public Long getId() {

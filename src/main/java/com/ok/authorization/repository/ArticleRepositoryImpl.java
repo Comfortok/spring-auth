@@ -36,8 +36,8 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     private EntityManager entityManager;
 
     @Override
-    public void createArticle(Article article) {
-        logger.warn("Adding an article to database with id " + article.getId());
+    public Article createArticle(Article article) {
+        logger.warn("Adding an article to database with header: " + article.getHeader());
         try {
             entityManager.createNativeQuery(INSERT_ARTICLE_TO_DB)
                     .setParameter(1, article.getHeader())
@@ -48,11 +48,12 @@ public class ArticleRepositoryImpl implements ArticleRepository {
         } catch (Exception e) {
             logger.error("An exception has happened while adding an article. ", e);
         }
-        logger.info("An article with id " + article.getId() + " is successfully added.");
+        logger.info("An article with header '" + article.getHeader() + "' is successfully added.");
+        return article;
     }
 
     @Override
-    public void removeArticle(long id) {
+    public boolean removeArticle(long id) {
         logger.warn("Loading an article with id " + id);
         try {
             Article article = sessionFactory.getCurrentSession().load(Article.class, id);
@@ -64,10 +65,11 @@ public class ArticleRepositoryImpl implements ArticleRepository {
             logger.error("An exception has happened while deleting an article. ", e);
         }
         logger.info("An article with id " + id + " is successfully removed.");
+        return true;
     }
 
     @Override
-    public void editArticle(Article article) {
+    public Article editArticle(Article article) {
         logger.info("Editing an article with id " + article.getId());
         try {
             CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
@@ -82,6 +84,7 @@ public class ArticleRepositoryImpl implements ArticleRepository {
             logger.error("An exception has happened while editing an article. ", e);
         }
         logger.info("An article with id " + article.getId() + " is successfully updated.");
+        return article;
     }
 
     @Override

@@ -46,6 +46,14 @@ public class User {
     public User() {
     }
 
+    public User(String username, String password, boolean enabled, Set<Role> roles, Set<Comment> comments) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.roles = roles;
+        this.comments = comments;
+    }
+
     public String getUsername() {
         return username;
     }

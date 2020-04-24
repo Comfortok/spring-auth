@@ -26,6 +26,16 @@ public class Comment {
     @JoinColumn(name = "username")
     private User user;
 
+    public Comment() {
+    }
+
+    public Comment(long id, String text, Article article, User user) {
+        this.id = id;
+        this.text = text;
+        this.article = article;
+        this.user = user;
+    }
+
     public long getId() {
         return id;
     }

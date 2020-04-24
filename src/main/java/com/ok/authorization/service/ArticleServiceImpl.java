@@ -23,26 +23,25 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @Transactional
     @CacheEvict(value = "articles", allEntries = true)
-    public void createArticle(Article article)
-    {
-        logger.info("Setting a current date to an article with id " + article.getId());
+    public Article createArticle(Article article) {
+        logger.info("Setting a current date to an article with header: " + article.getHeader());
         article.setReleaseDate(new Date());
         logger.info("Current date is " + article.getReleaseDate());
-        this.articleRepository.createArticle(article);
+        return articleRepository.createArticle(article);
     }
 
     @Override
     @Transactional
     @CacheEvict(value = "articles", allEntries = true)
-    public void removeArticle(long id) {
-        this.articleRepository.removeArticle(id);
+    public boolean removeArticle(long id) {
+        return this.articleRepository.removeArticle(id);
     }
 
     @Override
     @Transactional
     @CacheEvict(value = "articles", allEntries = true)
-    public void editArticle(Article article) {
-        this.articleRepository.editArticle(article);
+    public Article editArticle(Article article) {
+        return this.articleRepository.editArticle(article);
     }
 
     @Override
