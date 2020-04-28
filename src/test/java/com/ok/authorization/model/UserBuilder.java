@@ -1,8 +1,4 @@
-package com.ok.authorization.service;
-
-import com.ok.authorization.model.Comment;
-import com.ok.authorization.model.Role;
-import com.ok.authorization.model.User;
+package com.ok.authorization.model;
 
 import java.util.HashSet;
 import java.util.Set;

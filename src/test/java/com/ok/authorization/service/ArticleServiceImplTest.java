@@ -2,9 +2,7 @@ package com.ok.authorization.service;
 
 import com.ok.authorization.config.core.SpringMvcInitializer;
 import com.ok.authorization.config.core.SpringSecurityInitializer;
-import com.ok.authorization.model.Article;
-import com.ok.authorization.model.Role;
-import com.ok.authorization.model.User;
+import com.ok.authorization.model.*;
 import com.ok.authorization.repository.ArticleRepository;
 
 import org.junit.Assert;
@@ -12,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.*;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -36,18 +33,8 @@ public class ArticleServiceImplTest {
 
     @Before
     public void setup() {
-        Set<Role> roles = new HashSet<>();
-        Role adminRole = new RoleBuilder()
-                .withId(1L)
-                .withRole("ROLE_ADMIN")
-                .build();
-        roles.add(adminRole);
-
         User user = new UserBuilder()
                 .withUsername("Test username")
-                .withPassword("Test password")
-                .withEnabled(true)
-                .withRoles(roles)
                 .build();
 
         article = new ArticleBuilder()

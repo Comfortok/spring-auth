@@ -30,7 +30,7 @@ public class CommentRepositoryImpl implements CommentRepository {
     private EntityManager entityManager;
 
     @Override
-    public void createComment(Comment comment, long id) {
+    public Comment createComment(Comment comment, long id) {
         logger.warn("Adding a comment to database with id " + id);
         try {
             entityManager.createNativeQuery(INSERT_COMMENT_TO_DB)
@@ -42,10 +42,11 @@ public class CommentRepositoryImpl implements CommentRepository {
             logger.error("An exception has happened while adding a comment. ", e);
         }
         logger.info("A comment with id " + comment.getId() + " is successfully added.");
+        return comment;
     }
 
     @Override
-    public void removeComment(long id) {
+    public boolean removeComment(long id) {
         logger.warn("Getting a comment with id " + id + " to delete");
         Comment comment = getCommentById(id);
         try {
@@ -54,10 +55,11 @@ public class CommentRepositoryImpl implements CommentRepository {
             logger.error("An exception has happened while deleting a comment. ", e);
         }
         logger.info("A comment with id " + comment.getId() + " is successfully deleted.");
+        return true;
     }
 
     @Override
-    public void editComment(Comment comment) {
+    public Comment editComment(Comment comment) {
         logger.warn("Editing a comment with id " + comment.getId());
         try {
             sessionFactory.getCurrentSession().merge(comment);
@@ -65,6 +67,7 @@ public class CommentRepositoryImpl implements CommentRepository {
             logger.error("An exception has happened while editing a comment. ", e);
         }
         logger.info("Comment with id " + comment.getId() + " is successfully updated.");
+        return comment;
     }
 
     @Override

@@ -25,7 +25,7 @@ public class RoleRepositoryImpl implements RoleRepository {
     private EntityManager entityManager;
 
     @Override
-    public void addRole(Role role) {
+    public boolean addRole(Role role) {
         String username = role.getUser().getUsername();
         String userRole = role.getRole();
         logger.warn("Adding " + username + " and its " + userRole + " role to database.");
@@ -38,10 +38,11 @@ public class RoleRepositoryImpl implements RoleRepository {
             logger.error("An exception has happened while add a username and its role to database. ", e);
         }
         logger.info(username + " with " + userRole + " has successfully added to database.");
+        return true;
     }
 
     @Override
-    public void removeRole(Role role) {
+    public boolean removeRole(Role role) {
         logger.warn("Deleting a role for user from database.");
         try {
             sessionFactory.getCurrentSession().delete(role);
@@ -49,5 +50,6 @@ public class RoleRepositoryImpl implements RoleRepository {
             logger.error("An exception has happened while deleting a role for user from the database. ", e);
         }
         logger.info("A role for user has successfully deleted from database.");
+        return true;
     }
 }

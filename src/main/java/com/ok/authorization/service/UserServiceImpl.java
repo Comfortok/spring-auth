@@ -28,11 +28,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void createUser(User user) {
+    public User createUser(User user) {
         logger.warn("Password encoding for user " + user.getUsername());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         logger.info("Password for user " + user.getUsername() + " has successfully encoded.");
-        userRepository.createUser(user);
+        return userRepository.createUser(user);
     }
 
     @Override
@@ -43,13 +43,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void enableUser(String username) {
-        userRepository.enableUser(username);
+    public boolean enableUser(String username) {
+        return userRepository.enableUser(username);
     }
 
     @Override
     @Transactional
-    public void disableUser(String username) {
-        userRepository.disableUser(username);
+    public boolean disableUser(String username) {
+        return userRepository.disableUser(username);
     }
 }

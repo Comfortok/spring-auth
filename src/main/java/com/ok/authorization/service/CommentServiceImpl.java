@@ -17,20 +17,20 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     @Transactional
-    public void createComment(Comment comment, long id) {
-        this.commentRepository.createComment(comment, id);
+    public Comment createComment(Comment comment, long id) {
+        return this.commentRepository.createComment(comment, id);
     }
 
     @Override
     @Transactional
-    public void removeComment(long id) {
-        this.commentRepository.removeComment(id);
+    public boolean removeComment(long id) {
+        return this.commentRepository.removeComment(id);
     }
 
     @Override
     @Transactional
-    public void editComment(Comment comment) {
-        this.commentRepository.editComment(comment);
+    public Comment editComment(Comment comment) {
+        return this.commentRepository.editComment(comment);
     }
 
     @Override

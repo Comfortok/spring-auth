@@ -43,7 +43,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void createUser(User user) {
+    public User createUser(User user) {
         logger.warn("Adding a user to the database with username " + user.getUsername());
         try {
             entityManager.createNativeQuery(INSERT_USER_TO_DB)
@@ -54,6 +54,7 @@ public class UserRepositoryImpl implements UserRepository {
             logger.error("An exception has happened while adding a user to the database. ", e);
         }
         logger.info("A user with username " + user.getUsername() + " has been added to the database.");
+        return user;
     }
 
     @SuppressWarnings("unchecked")
@@ -71,7 +72,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void enableUser(String username) {
+    public boolean enableUser(String username) {
         logger.warn("Enabling a user with username " + username);
         try {
             entityManager.createNativeQuery(ENABLE_USER_BY_USERNAME)
@@ -81,10 +82,11 @@ public class UserRepositoryImpl implements UserRepository {
             logger.error("An exception has happened while enabling a user. ", e);
         }
         logger.info("A user with username " + username + " has successfully enabled.");
+        return true;
     }
 
     @Override
-    public void disableUser(String username) {
+    public boolean disableUser(String username) {
         logger.warn("Disabling a user with username " + username);
         try {
             entityManager.createNativeQuery(DISABLE_USER_BY_USERNAME)
@@ -94,5 +96,6 @@ public class UserRepositoryImpl implements UserRepository {
             logger.error("An exception has happened while disabling a user. ", e);
         }
         logger.info("A user with username " + username + " has successfully disabled.");
+        return false;
     }
 }

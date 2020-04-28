@@ -7,16 +7,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a42aea81-6ef7-4149-bc2e-7c059e78a6b7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/CommentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/CommentRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/CommentRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/RoleRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/RoleRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/UserRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ok/authorization/service/ArticleBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ok/authorization/model/ArticleBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ok/authorization/service/ArticleServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ok/authorization/service/ArticleServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ok/authorization/service/CommentBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ok/authorization/model/CommentBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ok/authorization/service/RoleBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ok/authorization/model/RoleBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ok/authorization/service/UserBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ok/authorization/model/UserBuilder.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +67,20 @@
         <item name="news: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="article: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="news@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="news: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="user_roles: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="news@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="news: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="users: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -98,11 +121,11 @@
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.other" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -114,6 +137,7 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.ok.authorization.model" />
       <recent name="com.ok.authorization.controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -147,8 +171,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ArticleServiceImplTest">
-    <configuration name="ArticleServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserDetailsServiceImplTest.shouldLoadUserByUsername">
+    <configuration name="CommentServiceImplTest.shouldCreateAComment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="authorizationspring" />
       <extension name="coverage">
         <pattern>
@@ -157,29 +181,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ok.authorization.service" />
-      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.ArticleServiceImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ArticleServiceImplTest.shouldCreateAnArticle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="authorizationspring" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ok.authorization.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ok.authorization.service" />
-      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.ArticleServiceImplTest" />
-      <option name="METHOD_NAME" value="shouldCreateAnArticle" />
+      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.CommentServiceImplTest" />
+      <option name="METHOD_NAME" value="shouldCreateAComment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ArticleServiceImplTest.shouldGetAllArticles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CommentServiceImplTest.shouldGetAllComments" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="authorizationspring" />
       <extension name="coverage">
         <pattern>
@@ -188,14 +197,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ok.authorization.service" />
-      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.ArticleServiceImplTest" />
-      <option name="METHOD_NAME" value="shouldGetAllArticles" />
+      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.CommentServiceImplTest" />
+      <option name="METHOD_NAME" value="shouldGetAllComments" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ArticleServiceImplTest.shouldGetAnArticleById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RoleServiceImplTest.shouldAddRole" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="authorizationspring" />
       <extension name="coverage">
         <pattern>
@@ -204,14 +213,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ok.authorization.service" />
-      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.ArticleServiceImplTest" />
-      <option name="METHOD_NAME" value="shouldGetAnArticleById" />
+      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.RoleServiceImplTest" />
+      <option name="METHOD_NAME" value="shouldAddRole" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ArticleServiceImplTest.shouldUpdateAnArticle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserDetailsServiceImplTest.shouldLoadUserByUsername" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="authorizationspring" />
       <extension name="coverage">
         <pattern>
@@ -220,8 +229,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.ok.authorization.service" />
-      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.ArticleServiceImplTest" />
-      <option name="METHOD_NAME" value="shouldUpdateAnArticle" />
+      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.UserDetailsServiceImplTest" />
+      <option name="METHOD_NAME" value="shouldLoadUserByUsername" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest.shouldDisableUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="authorizationspring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ok.authorization.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ok.authorization.service" />
+      <option name="MAIN_CLASS_NAME" value="com.ok.authorization.service.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="shouldDisableUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -302,19 +327,19 @@
     </configuration>
     <list>
       <item itemvalue="Tomcat Server.TC4S" />
-      <item itemvalue="JUnit.ArticleServiceImplTest.shouldGetAnArticleById" />
-      <item itemvalue="JUnit.ArticleServiceImplTest.shouldGetAllArticles" />
-      <item itemvalue="JUnit.ArticleServiceImplTest.shouldCreateAnArticle" />
-      <item itemvalue="JUnit.ArticleServiceImplTest" />
-      <item itemvalue="JUnit.ArticleServiceImplTest.shouldUpdateAnArticle" />
+      <item itemvalue="JUnit.UserServiceImplTest.shouldDisableUser" />
+      <item itemvalue="JUnit.CommentServiceImplTest.shouldCreateAComment" />
+      <item itemvalue="JUnit.CommentServiceImplTest.shouldGetAllComments" />
+      <item itemvalue="JUnit.RoleServiceImplTest.shouldAddRole" />
+      <item itemvalue="JUnit.UserDetailsServiceImplTest.shouldLoadUserByUsername" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ArticleServiceImplTest" />
-        <item itemvalue="JUnit.ArticleServiceImplTest.shouldCreateAnArticle" />
-        <item itemvalue="JUnit.ArticleServiceImplTest.shouldUpdateAnArticle" />
-        <item itemvalue="JUnit.ArticleServiceImplTest.shouldGetAllArticles" />
-        <item itemvalue="JUnit.ArticleServiceImplTest.shouldGetAnArticleById" />
+        <item itemvalue="JUnit.UserDetailsServiceImplTest.shouldLoadUserByUsername" />
+        <item itemvalue="JUnit.RoleServiceImplTest.shouldAddRole" />
+        <item itemvalue="JUnit.CommentServiceImplTest.shouldGetAllComments" />
+        <item itemvalue="JUnit.CommentServiceImplTest.shouldCreateAComment" />
+        <item itemvalue="JUnit.UserServiceImplTest.shouldDisableUser" />
       </list>
     </recent_temporary>
   </component>
@@ -374,7 +399,14 @@
       <workItem from="1587554986646" duration="2272000" />
       <workItem from="1587557354209" duration="2703000" />
       <workItem from="1587619306649" duration="11734000" />
-      <workItem from="1587707371995" duration="11405000" />
+      <workItem from="1587707371995" duration="11683000" />
+      <workItem from="1587738511108" duration="5750000" />
+      <workItem from="1587756835387" duration="2689000" />
+      <workItem from="1587798407763" duration="167000" />
+      <workItem from="1587798646006" duration="2632000" />
+      <workItem from="1587963589250" duration="574000" />
+      <workItem from="1587975564220" duration="4698000" />
+      <workItem from="1588059411251" duration="6328000" />
     </task>
     <servers />
   </component>

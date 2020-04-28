@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface UserService {
     User findByUserName(String username);
-    void createUser(User user);
+    User createUser(User user);
     List<User> getAllUsers();
-    void enableUser(String username);
-    void disableUser(String username);
+    boolean enableUser(String username);
+    boolean disableUser(String username);
 }

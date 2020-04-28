@@ -14,13 +14,13 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     @Transactional
-    public void addRole(Role role) {
-        roleRepository.addRole(role);
+    public boolean addRole(Role role) {
+        return roleRepository.addRole(role);
     }
 
     @Override
     @Transactional
-    public void removeRole(Role role) {
-        roleRepository.removeRole(role);
+    public boolean removeRole(Role role) {
+        return roleRepository.removeRole(role);
     }
 }

@@ -1,7 +1,4 @@
-package com.ok.authorization.service;
-
-import com.ok.authorization.model.Role;
-import com.ok.authorization.model.User;
+package com.ok.authorization.model;
 
 public class RoleBuilder extends Role {
     private long id;
