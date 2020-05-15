@@ -60,7 +60,7 @@ public class AppConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public HibernateTransactionManager txManager() {
+    public HibernateTransactionManager transactionManager() {
         return new HibernateTransactionManager(sessionFactory());
     }
 
@@ -106,11 +106,11 @@ public class AppConfig implements WebMvcConfigurer {
         return messageSource;
     }
 
-    @Bean
-    @Override
-    public Validator getValidator() {
-        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
-        bean.setValidationMessageSource(messageSource());
-        return bean;
-    }
+//    @Bean
+//    @Override
+//    public Validator getValidator() {
+//        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
+//        bean.setValidationMessageSource(messageSource());
+//        return bean;
+//    }
 }

@@ -1,6 +1,9 @@
 package com.ok.authorization.config.core;
 
 import com.ok.authorization.config.AppConfig;
+import com.ok.authorization.repository.UserRepository;
+import com.ok.authorization.repository.UserRepositoryImpl;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.FrameworkServlet;
@@ -25,7 +28,7 @@ public class SpringMvcInitializer extends AbstractAnnotationConfigDispatcherServ
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return null;
+        return new Class[] {AppConfig.class};
     }
 
     @Override

@@ -5,10 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
 
 @Controller
 public class MainController {
@@ -40,13 +41,12 @@ public class MainController {
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public ModelAndView accessDenied() {
+    public ModelAndView accessDenied(Principal principal) {
         logger.info("Getting '403' page.");
         ModelAndView model = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (!(auth instanceof AnonymousAuthenticationToken)) {
-            UserDetails userDetail = (UserDetails) auth.getPrincipal();
-            model.addObject("username", userDetail.getUsername());
+        if (!(auth instanceof AnonymousAuthenticationToken) && auth != null) {
+            model.addObject("username", principal.getName());
         }
         return model;
     }

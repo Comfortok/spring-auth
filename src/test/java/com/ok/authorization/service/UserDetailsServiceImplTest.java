@@ -18,14 +18,12 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {SpringMvcInitializer.class, SpringSecurityInitializer.class})
-@WebAppConfiguration
 public class UserDetailsServiceImplTest {
 
     @Mock

@@ -50,7 +50,7 @@
                             <spring:message code="header.login"/></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/registration">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/signup">
                             <spring:message code="header.registration"/></a>
                     </li>
                 </c:otherwise>

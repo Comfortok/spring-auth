@@ -39,16 +39,16 @@ public class UserController {
     @Autowired
     private RoleValidator roleValidator;
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String registration(Model model) {
         logger.info("Getting 'registration' page.");
         model.addAttribute("userForm", new User());
         return "registration";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@Valid @ModelAttribute("userForm") User userForm, BindingResult bindingResult,
-                               Errors errors) {
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    public String registration(@Valid @ModelAttribute("userForm") User userForm,
+                               BindingResult bindingResult, Errors errors) {
         logger.info("Validating a user.");
         userValidator.validate(userForm, bindingResult);
         if (bindingResult.hasErrors() || errors.hasErrors()) {

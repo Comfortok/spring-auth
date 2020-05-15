@@ -17,7 +17,6 @@ import org.mockito.stubbing.Answer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,6 @@ import static org.mockito.ArgumentMatchers.isA;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {SpringMvcInitializer.class, SpringSecurityInitializer.class})
-@WebAppConfiguration
 public class UserServiceImplTest {
 
     @Mock

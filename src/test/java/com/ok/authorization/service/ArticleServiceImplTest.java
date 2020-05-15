@@ -10,31 +10,31 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.*;
+import org.springframework.security.core.Authentication;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.*;
 
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@RunWith(MockitoJUnitRunner.class)
 @ContextConfiguration(classes = {SpringMvcInitializer.class, SpringSecurityInitializer.class})
-@WebAppConfiguration
 public class ArticleServiceImplTest {
 
     @Mock
     private ArticleRepository articleRepository;
     private Article article;
+    private User user;
 
     @InjectMocks
     private ArticleService articleService = new ArticleServiceImpl();
 
     @Before
     public void setup() {
-        User user = new UserBuilder()
-                .withUsername("Test username")
+        user = new UserBuilder()
+                .withUsername("TestUsername")
+                .withPassword("TestPass")
                 .build();
 
         article = new ArticleBuilder()
