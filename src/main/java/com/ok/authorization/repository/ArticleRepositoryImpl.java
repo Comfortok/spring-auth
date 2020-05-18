@@ -1,6 +1,7 @@
 package com.ok.authorization.repository;
 
 import com.ok.authorization.model.Article;
+import javafx.print.Collation;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -15,7 +16,11 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 @Transactional
@@ -28,12 +33,15 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     private static final String ARTICLE_DATE = "releaseDate";
     private static final String ARTICLE_ID = "id";
     private static final String SELECT_ALL_ARTICLES_FROM_DB = "select e from Article e order by e.releaseDate desc";
+    private static final String GET_ALL_ARTICLES = "from Article";
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    private List<Article> articles;
 
     @Override
     public Article createArticle(Article article) {
@@ -114,5 +122,38 @@ public class ArticleRepositoryImpl implements ArticleRepository {
         }
         logger.info("All articles were selected.");
         return (List<Article>) query.getResultList();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Article> getAllArticlesSortedByHeader() {
+        logger.warn("Getting all articles from the database.");
+        try {
+            articles = sessionFactory.getCurrentSession().createQuery(GET_ALL_ARTICLES).list();
+        } catch (HibernateException e) {
+            logger.error("An exception has happened while getting all articles from the database. ", e);
+        }
+        logger.info("All articles have been loaded and sorted by header.");
+        assert articles != null;
+        return articles.stream()
+                .sorted(Comparator.comparing(Article::getHeader))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Article> getAllArticlesSortedByTextSize() {
+        logger.warn("Getting all articles from the database.");
+        try {
+            articles = sessionFactory.getCurrentSession().createQuery(GET_ALL_ARTICLES).list();
+        } catch (HibernateException e) {
+            logger.error("An exception has happened while getting all articles from the database. ", e);
+        }
+        logger.info("All articles have been loaded.");
+        assert articles != null;
+        articles.sort(Comparator.comparingInt(a -> a.getText().length()));
+        Collections.reverse(articles);
+        logger.info("All articles have been sorted by text size.");
+        return articles;
     }
 }

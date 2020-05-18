@@ -10,4 +10,6 @@ public interface ArticleRepository {
     Article editArticle(Article article);
     Article getArticleById(long id);
     List<Article> getAllArticles();
+    List<Article> getAllArticlesSortedByHeader();
+    List<Article> getAllArticlesSortedByTextSize();
 }

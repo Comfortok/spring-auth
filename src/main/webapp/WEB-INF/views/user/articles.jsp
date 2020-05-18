@@ -16,6 +16,10 @@
 <body>
 <center>
     <c:if test="${!empty listArticles}">
+        <a class="btn btn-info btn-sm" href="${pageContext.request.contextPath}/user/articles/byHeader"
+           role="button"><spring:message code="hello.button.articles.sort.byHeader"/></a>
+        <a class="btn btn-info btn-sm" href="${pageContext.request.contextPath}/user/articles/byText"
+           role="button"><spring:message code="hello.button.articles.sort.byText"/></a>
         <form:form method="post" action="${pageContext.request.contextPath}/admin/remove">
             <div id="accordion">
                 <c:forEach items="${listArticles}" var="article" varStatus="loop">

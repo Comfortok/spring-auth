@@ -18,7 +18,7 @@
     <hr class="my-4">
     <p><spring:message code="hello.text"/></p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/user/articles"
+        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/user/articles/default"
            role="button"><spring:message code="hello.button.articles"/></a>
     </p>
 </div>

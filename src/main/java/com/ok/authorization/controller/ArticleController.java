@@ -40,11 +40,21 @@ public class ArticleController {
     @Autowired
     private ArticleValidator articleValidator;
 
-    @RequestMapping(value = "/user/articles", method = RequestMethod.GET)
-    public String listArticles(ModelMap model) {
+    @RequestMapping(value = "/user/articles/{sort}", method = RequestMethod.GET)
+    public String listArticles(ModelMap model, @PathVariable("sort") String sortType) {
         logger.info("Getting 'user/articles' page.");
         model.addAttribute("article", new Article());
-        model.addAttribute("listArticles", this.articleService.getAllArticles());
+        switch (sortType) {
+            case "byHeader" :
+                model.addAttribute("listArticles", this.articleService.getAllArticlesSortedByHeader());
+                break;
+            case "byText" :
+                model.addAttribute("listArticles", this.articleService.getAllArticlesSortedByTextSize());
+                break;
+            default:
+                model.addAttribute("listArticles", this.articleService.getAllArticles());
+                break;
+        }
         return "user/articles";
     }
 

@@ -73,4 +73,16 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> getAllArticles() {
         return this.articleRepository.getAllArticles();
     }
+
+    @Override
+    @Transactional
+    public List<Article> getAllArticlesSortedByHeader() {
+        return this.articleRepository.getAllArticlesSortedByHeader();
+    }
+
+    @Override
+    @Transactional
+    public List<Article> getAllArticlesSortedByTextSize() {
+        return this.articleRepository.getAllArticlesSortedByTextSize();
+    }
 }
