@@ -8,16 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a42aea81-6ef7-4149-bc2e-7c059e78a6b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/model/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/repository/ArticleRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/service/ArticleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages_ru.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hello.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hello.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/articles.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/articles.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ok/authorization/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ok/authorization/config/AppConfig.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -321,12 +313,12 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.ArticleRepositoryImpl" />
       <item itemvalue="JUnit.MainControllerTest.shouldReturnDefaultHelloPage" />
       <item itemvalue="JUnit.MainControllerTest.shouldReturnLoginPageWithLogoutAttribute" />
       <item itemvalue="JUnit.MainControllerTest.shouldReturn403ErrorPage" />
       <item itemvalue="JUnit.MainControllerTest" />
       <item itemvalue="Tomcat Server.TC4S" />
-      <item itemvalue="Application.ArticleRepositoryImpl" />
     </list>
     <recent_temporary>
       <list>
@@ -413,7 +405,8 @@
       <workItem from="1589358427632" duration="11756000" />
       <workItem from="1589443331886" duration="585000" />
       <workItem from="1589533149602" duration="8121000" />
-      <workItem from="1589795878637" duration="6789000" />
+      <workItem from="1589795878637" duration="6867000" />
+      <workItem from="1589887454510" duration="2006000" />
     </task>
     <servers />
   </component>

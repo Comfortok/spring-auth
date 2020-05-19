@@ -1,5 +1,6 @@
 package com.ok.authorization.config;
 
+import com.ok.authorization.aspect.LoggingAspect;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.validation.Validator;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -25,6 +24,7 @@ import java.util.Properties;
 @Configuration
 @ComponentScan( {"com.ok.authorization.*"} )
 @EnableTransactionManagement
+@EnableAspectJAutoProxy
 @Import( { SecurityConfig.class, CacheConfig.class } )
 @PropertySource("classpath:db.properties")
 public class AppConfig implements WebMvcConfigurer {
@@ -106,11 +106,8 @@ public class AppConfig implements WebMvcConfigurer {
         return messageSource;
     }
 
-//    @Bean
-//    @Override
-//    public Validator getValidator() {
-//        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
-//        bean.setValidationMessageSource(messageSource());
-//        return bean;
-//    }
+    @Bean
+    public LoggingAspect loggingAspect() {
+        return new LoggingAspect();
+    }
 }
