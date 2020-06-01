@@ -96,4 +96,18 @@ public class Article {
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Article article = (Article) o;
+        return id == article.id &&
+                Objects.equals(header, article.header);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, header);
+    }
 }
